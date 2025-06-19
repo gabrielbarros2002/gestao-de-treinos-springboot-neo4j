@@ -1,7 +1,7 @@
 package com.barros.gestao_de_treinos.services;
 
 import com.barros.gestao_de_treinos.entities.jpa.GrupoMuscular;
-import com.barros.gestao_de_treinos.repositories.GrupoMuscularRepository;
+import com.barros.gestao_de_treinos.repositories.jpa.GrupoMuscularRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;

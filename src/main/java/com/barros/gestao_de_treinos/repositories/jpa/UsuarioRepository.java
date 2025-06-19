@@ -1,4 +1,4 @@
-package com.barros.gestao_de_treinos.repositories;
+package com.barros.gestao_de_treinos.repositories.jpa;
 
 import com.barros.gestao_de_treinos.entities.jpa.Usuario;
 import com.barros.gestao_de_treinos.entities.enums.Perfil;

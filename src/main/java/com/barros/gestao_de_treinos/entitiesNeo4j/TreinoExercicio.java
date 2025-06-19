@@ -1,7 +1,5 @@
 package com.barros.gestao_de_treinos.entitiesNeo4j;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.RelationshipProperties;
 import org.springframework.data.neo4j.core.schema.TargetNode;
 
@@ -10,10 +8,6 @@ import java.util.Objects;
 
 @RelationshipProperties
 public class TreinoExercicio implements Serializable {
-
-    @Id
-    @GeneratedValue
-    private Long id;
 
     @TargetNode
     private Exercicio exercicio;
@@ -30,10 +24,6 @@ public class TreinoExercicio implements Serializable {
         this.series = series;
         this.repeticoes = repeticoes;
         this.ordem = ordem;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public Exercicio getExercicio() {
@@ -72,11 +62,11 @@ public class TreinoExercicio implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof TreinoExercicio that)) return false;
-        return Objects.equals(id, that.id);
+        return Objects.equals(exercicio, that.exercicio);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(exercicio);
     }
 }

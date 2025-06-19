@@ -10,9 +10,7 @@ import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Node("Treino")
 public class Treino implements Serializable {
@@ -28,7 +26,7 @@ public class Treino implements Serializable {
     // Supondo que TreinoExercicio também será um @Node
     @NotNull(message = "O treino deve conter exercícios")
     @Relationship(type = "CONTÉM_EXERCICIO", direction = Relationship.Direction.OUTGOING)
-    private Set<TreinoExercicio> exercicios = new HashSet<>();
+    private List<TreinoExercicio> exercicios = new ArrayList<>();
 
     @JsonIgnore
     @Relationship(type = "ALUNO_TREINA", direction = Relationship.Direction.INCOMING)
@@ -63,11 +61,11 @@ public class Treino implements Serializable {
         this.nome = nome;
     }
 
-    public Set<TreinoExercicio> getExercicios() {
+    public List<TreinoExercicio> getExercicios() {
         return exercicios;
     }
 
-    public void setExercicios(Set<TreinoExercicio> exercicios) {
+    public void setExercicios(List<TreinoExercicio> exercicios) {
         this.exercicios = exercicios;
     }
 

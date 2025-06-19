@@ -1,6 +1,6 @@
-package com.barros.gestao_de_treinos.entities;
+package com.barros.gestao_de_treinos.entities.jpa;
 
-import com.barros.gestao_de_treinos.entities.PK.TreinoExercicioPK;
+import com.barros.gestao_de_treinos.entities.jpa.PK.TreinoExercicioPK;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;

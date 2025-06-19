@@ -1,4 +1,4 @@
-package com.barros.gestao_de_treinos.entitiesNeo4j;
+package com.barros.gestao_de_treinos.entities.neo4j;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotBlank;

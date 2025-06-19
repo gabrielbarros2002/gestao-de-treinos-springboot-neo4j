@@ -1,4 +1,4 @@
-package com.barros.gestao_de_treinos.entitiesNeo4j;
+package com.barros.gestao_de_treinos.entities.neo4j;
 
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
 import jakarta.validation.constraints.Email;

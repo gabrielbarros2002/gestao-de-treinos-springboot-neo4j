@@ -1,39 +1,41 @@
-package com.barros.gestao_de_treinos.entitiesNeo4j;
+package com.barros.gestao_de_treinos.entities.jpa;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
-@Node("Treino")
+@Entity
+@Table(name = "treinos")
 public class Treino implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "O nome do treino é obrigatório")
     @Size(min = 3, max = 100, message = "O nome deve ter entre {min} e {max} caracteres")
+    @Column(nullable = false, length = 100)
     private String nome;
 
-    // Supondo que TreinoExercicio também será um @Node
     @NotNull(message = "O treino deve conter exercícios")
-    @Relationship(type = "CONTÉM_EXERCICIO", direction = Relationship.Direction.OUTGOING)
-    private List<TreinoExercicio> exercicios = new ArrayList<>();
+    @OneToMany(mappedBy = "id.treino", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<TreinoExercicio> exercicios;
 
     @JsonIgnore
-    @Relationship(type = "ALUNO_TREINA", direction = Relationship.Direction.INCOMING)
+    @ManyToMany(mappedBy = "treinos")
     private Set<Usuario> alunos = new HashSet<>();
 
+    @NotNull(message = "O instrutor é obrigatório")
     @JsonIgnore
-    @Relationship(type = "INSTRUI", direction = Relationship.Direction.INCOMING)
+    @ManyToOne
+    @JoinColumn(name = "instrutor_id", nullable = false, foreignKey = @ForeignKey(name = "fk_treino_instrutor"))
     private Usuario instrutor;
 
     public Treino() {
@@ -42,6 +44,7 @@ public class Treino implements Serializable {
     public Treino(Long id, String nome, Usuario instrutor) {
         this.id = id;
         this.nome = nome;
+        this.exercicios = new HashSet<>();
         this.instrutor = instrutor;
     }
 
@@ -61,11 +64,11 @@ public class Treino implements Serializable {
         this.nome = nome;
     }
 
-    public List<TreinoExercicio> getExercicios() {
+    public Set<TreinoExercicio> getExercicios() {
         return exercicios;
     }
 
-    public void setExercicios(List<TreinoExercicio> exercicios) {
+    public void setExercicios(Set<TreinoExercicio> exercicios) {
         this.exercicios = exercicios;
     }
 

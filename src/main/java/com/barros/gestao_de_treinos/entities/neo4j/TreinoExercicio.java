@@ -1,4 +1,4 @@
-package com.barros.gestao_de_treinos.entitiesNeo4j;
+package com.barros.gestao_de_treinos.entities.neo4j;
 
 import org.springframework.data.neo4j.core.schema.RelationshipProperties;
 import org.springframework.data.neo4j.core.schema.TargetNode;

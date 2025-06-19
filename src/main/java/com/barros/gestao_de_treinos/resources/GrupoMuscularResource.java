@@ -1,6 +1,6 @@
 package com.barros.gestao_de_treinos.resources;
 
-import com.barros.gestao_de_treinos.entities.GrupoMuscular;
+import com.barros.gestao_de_treinos.entities.jpa.GrupoMuscular;
 import com.barros.gestao_de_treinos.services.GrupoMuscularService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

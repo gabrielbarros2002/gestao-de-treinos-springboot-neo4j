@@ -1,4 +1,4 @@
-package com.barros.gestao_de_treinos.entities;
+package com.barros.gestao_de_treinos.entities.jpa;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

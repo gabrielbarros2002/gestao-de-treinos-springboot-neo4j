@@ -1,6 +1,6 @@
 package com.barros.gestao_de_treinos.repositories;
 
-import com.barros.gestao_de_treinos.entities.AvaliacaoFisica;
+import com.barros.gestao_de_treinos.entities.jpa.AvaliacaoFisica;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

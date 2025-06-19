@@ -1,7 +1,7 @@
 package com.barros.gestao_de_treinos.repositories;
 
-import com.barros.gestao_de_treinos.entities.PK.TreinoExercicioPK;
-import com.barros.gestao_de_treinos.entities.TreinoExercicio;
+import com.barros.gestao_de_treinos.entities.jpa.PK.TreinoExercicioPK;
+import com.barros.gestao_de_treinos.entities.jpa.TreinoExercicio;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

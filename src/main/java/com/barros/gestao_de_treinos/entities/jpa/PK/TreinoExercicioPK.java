@@ -1,7 +1,7 @@
-package com.barros.gestao_de_treinos.entities.PK;
+package com.barros.gestao_de_treinos.entities.jpa.PK;
 
-import com.barros.gestao_de_treinos.entities.Exercicio;
-import com.barros.gestao_de_treinos.entities.Treino;
+import com.barros.gestao_de_treinos.entities.jpa.Exercicio;
+import com.barros.gestao_de_treinos.entities.jpa.Treino;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.ForeignKey;

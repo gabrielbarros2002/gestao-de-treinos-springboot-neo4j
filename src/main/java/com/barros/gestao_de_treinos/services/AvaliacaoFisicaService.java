@@ -1,6 +1,6 @@
 package com.barros.gestao_de_treinos.services;
 
-import com.barros.gestao_de_treinos.entities.AvaliacaoFisica;
+import com.barros.gestao_de_treinos.entities.jpa.AvaliacaoFisica;
 import com.barros.gestao_de_treinos.repositories.AvaliacaoFisicaRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;

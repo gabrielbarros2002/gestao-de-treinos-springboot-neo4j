@@ -1,8 +1,8 @@
 package com.barros.gestao_de_treinos.mappers;
 
 import com.barros.gestao_de_treinos.DTOs.ExercicioDTO;
-import com.barros.gestao_de_treinos.entities.Exercicio;
-import com.barros.gestao_de_treinos.entities.GrupoMuscular;
+import com.barros.gestao_de_treinos.entities.jpa.Exercicio;
+import com.barros.gestao_de_treinos.entities.jpa.GrupoMuscular;
 
 public class ExercicioMapper {
 

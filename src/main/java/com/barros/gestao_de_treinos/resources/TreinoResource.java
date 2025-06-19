@@ -1,7 +1,7 @@
 package com.barros.gestao_de_treinos.resources;
 
 import com.barros.gestao_de_treinos.DTOs.TreinoDTO;
-import com.barros.gestao_de_treinos.entities.Treino;
+import com.barros.gestao_de_treinos.entities.jpa.Treino;
 import com.barros.gestao_de_treinos.services.TreinoService;
 import com.barros.gestao_de_treinos.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

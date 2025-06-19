@@ -1,7 +1,7 @@
 package com.barros.gestao_de_treinos.mappers;
 
 import com.barros.gestao_de_treinos.DTOs.UsuarioDTO;
-import com.barros.gestao_de_treinos.entities.Usuario;
+import com.barros.gestao_de_treinos.entities.jpa.Usuario;
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
 
 public class UsuarioMapper {

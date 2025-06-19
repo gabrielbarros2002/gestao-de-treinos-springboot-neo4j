@@ -20,13 +20,19 @@ public class GrupoMuscularService {
     @Autowired
     private GrupoMuscularRepository repository;
 
-    public List<GrupoMuscular> findAll() {
-        return repository.findAll();
+    public List<GrupoMuscularDTO> findAll() {
+        List<GrupoMuscular> entityList = repository.findAll();
+        return entityList.stream().map(GrupoMuscularMapper::toDTO).toList();
     }
 
-    public GrupoMuscular findById(String id) {
+    public GrupoMuscular findEntityById(String id) {
         Optional<GrupoMuscular> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
+    }
+
+    public GrupoMuscularDTO findDtoById(String id) {
+        GrupoMuscular entity = findEntityById(id);
+        return GrupoMuscularMapper.toDTO(entity);
     }
 
     public GrupoMuscularDTO insert(GrupoMuscularDTO obj) {
@@ -46,7 +52,7 @@ public class GrupoMuscularService {
     }
 
     public GrupoMuscular update(String id, GrupoMuscular obj) {
-        GrupoMuscular entity = findById(id);
+        GrupoMuscular entity = findEntityById(id);
         updateData(entity, obj);
         return repository.save(entity);
     }

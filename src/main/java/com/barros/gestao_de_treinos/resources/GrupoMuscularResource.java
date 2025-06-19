@@ -20,14 +20,14 @@ public class GrupoMuscularResource {
     private GrupoMuscularService service;
 
     @GetMapping
-    public ResponseEntity<List<GrupoMuscular>> findAll() {
-        List<GrupoMuscular> list = service.findAll();
+    public ResponseEntity<List<GrupoMuscularDTO>> findAll() {
+        List<GrupoMuscularDTO> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<GrupoMuscular> findById(@PathVariable String id) {
-        GrupoMuscular obj = service.findById(id);
+    public ResponseEntity<GrupoMuscularDTO> findById(@PathVariable String id) {
+        GrupoMuscularDTO obj = service.findDtoById(id);
         return ResponseEntity.ok().body(obj);
     }
 

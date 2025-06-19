@@ -1,44 +1,38 @@
-package com.barros.gestao_de_treinos.entities.jpa;
+package com.barros.gestao_de_treinos.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
-@Entity
-@Table(name = "grupos_musculares")
+@Node("GrupoMuscular")
 public class GrupoMuscular implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(UUIDStringGenerator.class)
+    private String id;
 
     @NotBlank(message = "O nome do grupo muscular é obrigatório")
     @Size(min = 3, max = 50, message = "O nome deve ter entre {min} e {max} caracteres")
-    @Column(nullable = false, unique = true, length = 50)
     private String nome;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "grupoMuscular", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Exercicio> exercicios;
+    public GrupoMuscular() {}
 
-    public GrupoMuscular() {
-    }
-
-    public GrupoMuscular(Long id, String nome) {
+    public GrupoMuscular(String id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,10 +1,9 @@
-package com.barros.gestao_de_treinos.services.jpa;
+package com.barros.gestao_de_treinos.services;
 
-import com.barros.gestao_de_treinos.entities.jpa.GrupoMuscular;
-import com.barros.gestao_de_treinos.repositories.jpa.GrupoMuscularRepository;
+import com.barros.gestao_de_treinos.entities.GrupoMuscular;
+import com.barros.gestao_de_treinos.repositories.GrupoMuscularRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -23,16 +22,21 @@ public class GrupoMuscularService {
         return repository.findAll();
     }
 
-    public GrupoMuscular findById(Long id) {
+    public GrupoMuscular findById(String id) {
         Optional<GrupoMuscular> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public GrupoMuscular insert(GrupoMuscular obj) {
-        return repository.save(obj);
+        System.out.println("Tentando salvar: " + obj);
+        System.out.println("Repository class: " + repository.getClass());
+
+        GrupoMuscular saved = repository.save(obj);
+        System.out.println("Salvo com sucesso: " + saved);
+        return saved;
     }
 
-    public void delete(Long id) {
+    public void delete(String id) {
         try {
             repository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
@@ -42,14 +46,10 @@ public class GrupoMuscularService {
         }
     }
 
-    public GrupoMuscular update(Long id, GrupoMuscular obj) {
-        try {
-            GrupoMuscular entity = repository.getReferenceById(id);
-            updateData(entity, obj);
-            return repository.save(entity);
-        } catch (EntityNotFoundException e) {
-            throw new ResourceNotFoundException(id);
-        }
+    public GrupoMuscular update(String id, GrupoMuscular obj) {
+        GrupoMuscular entity = findById(id);
+        updateData(entity, obj);
+        return repository.save(entity);
     }
 
     private void updateData(GrupoMuscular entity, GrupoMuscular obj) {

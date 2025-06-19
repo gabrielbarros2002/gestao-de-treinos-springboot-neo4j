@@ -1,4 +1,4 @@
-package com.barros.gestao_de_treinos.entities.neo4j;
+package com.barros.gestao_de_treinos.entities;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -7,6 +7,7 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -15,8 +16,8 @@ import java.util.Objects;
 public class Exercicio implements Serializable {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(UUIDStringGenerator.class)
+    private String id;
 
     @NotBlank(message = "O nome do exercício é obrigatório")
     @Size(min = 3, max = 100, message = "O nome deve ter entre {min} e {max} caracteres")
@@ -31,18 +32,18 @@ public class Exercicio implements Serializable {
 
     public Exercicio() {}
 
-    public Exercicio(Long id, String nome, String descricao, GrupoMuscular grupoMuscular) {
+    public Exercicio(String id, String nome, String descricao, GrupoMuscular grupoMuscular) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.grupoMuscular = grupoMuscular;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

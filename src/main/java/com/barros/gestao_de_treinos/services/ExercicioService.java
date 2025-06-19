@@ -1,10 +1,9 @@
-package com.barros.gestao_de_treinos.services.jpa;
+package com.barros.gestao_de_treinos.services;
 
-import com.barros.gestao_de_treinos.entities.jpa.Exercicio;
-import com.barros.gestao_de_treinos.repositories.jpa.ExercicioRepository;
+import com.barros.gestao_de_treinos.entities.Exercicio;
+import com.barros.gestao_de_treinos.repositories.ExercicioRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -23,7 +22,7 @@ public class ExercicioService {
         return repository.findAll();
     }
 
-    public Exercicio findById(Long id) {
+    public Exercicio findById(String id) {
         Optional<Exercicio> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
@@ -32,7 +31,7 @@ public class ExercicioService {
         return repository.save(obj);
     }
 
-    public void delete(Long id) {
+    public void delete(String id) {
         try {
             repository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
@@ -42,14 +41,10 @@ public class ExercicioService {
         }
     }
 
-    public Exercicio update(Long id, Exercicio obj) {
-        try {
-            Exercicio entity = repository.getReferenceById(id);
-            updateData(entity, obj);
-            return repository.save(entity);
-        } catch (EntityNotFoundException e) {
-            throw new ResourceNotFoundException(id);
-        }
+    public Exercicio update(String id, Exercicio obj) {
+        Exercicio entity = findById(id);
+        updateData(entity, obj);
+        return repository.save(entity);
     }
 
     private void updateData(Exercicio entity, Exercicio obj) {

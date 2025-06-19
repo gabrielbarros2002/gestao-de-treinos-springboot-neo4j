@@ -1,7 +1,8 @@
 package com.barros.gestao_de_treinos.resources;
 
-import com.barros.gestao_de_treinos.entities.jpa.GrupoMuscular;
-import com.barros.gestao_de_treinos.services.jpa.GrupoMuscularService;
+import com.barros.gestao_de_treinos.entities.GrupoMuscular;
+import com.barros.gestao_de_treinos.services.GrupoMuscularService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,26 +25,26 @@ public class GrupoMuscularResource {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<GrupoMuscular> findById(@PathVariable Long id) {
+    public ResponseEntity<GrupoMuscular> findById(@PathVariable String id) {
         GrupoMuscular obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @PostMapping
-    public ResponseEntity<GrupoMuscular> insert(@RequestBody GrupoMuscular obj) {
+    public ResponseEntity<GrupoMuscular> insert(@Valid @RequestBody GrupoMuscular obj) {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<GrupoMuscular> update(@PathVariable Long id, @RequestBody GrupoMuscular obj) {
+    public ResponseEntity<GrupoMuscular> update(@PathVariable String id, @RequestBody GrupoMuscular obj) {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
     }

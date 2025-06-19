@@ -1,8 +1,8 @@
 package com.barros.gestao_de_treinos.mappers;
 
 import com.barros.gestao_de_treinos.DTOs.TreinoDTO;
-import com.barros.gestao_de_treinos.entities.jpa.Treino;
-import com.barros.gestao_de_treinos.entities.jpa.Usuario;
+import com.barros.gestao_de_treinos.entities.Treino;
+import com.barros.gestao_de_treinos.entities.Usuario;
 
 public class TreinoMapper {
 

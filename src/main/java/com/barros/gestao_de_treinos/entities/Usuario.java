@@ -1,61 +1,53 @@
-package com.barros.gestao_de_treinos.entities.jpa;
+package com.barros.gestao_de_treinos.entities;
 
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
-@Entity
-@Table(name = "usuarios")
+@Node("Usuario")
 public class Usuario implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @NotBlank(message = "O nome é obrigatório")
     @Size(min = 3, max = 100, message = "O nome deve ter entre {min} e {max} caracteres")
-    @Column(nullable = false, length = 100)
     private String nome;
 
     @NotBlank(message = "O email é obrigatório")
     @Email(message = "Por favor, forneça um endereço de email válido")
-    @Column(nullable = false, unique = true, length = 100)
     private String email;
 
     @NotBlank(message = "A senha é obrigatória")
     @Size(min = 5, message = "A senha deve ter no mínimo {min} caracteres")
-    @Column(nullable = false, length = 50)
     private String senha;
 
     @NotNull(message = "A data de nascimento é obrigatória")
-    @Past(message = "A data de nascimento deve ser no passado")
-    @Column(nullable = false)
     private LocalDate dataNascimento;
 
     @NotNull(message = "O perfil é obrigatório")
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
     private Perfil perfil;
 
-    @ManyToMany()
-    @JoinTable(
-            name = "aluno_treinos",
-            joinColumns = @JoinColumn(name = "aluno_id", foreignKey = @ForeignKey(name = "fk_alunotreinos_aluno")),
-            inverseJoinColumns = @JoinColumn(name = "treino_id", foreignKey = @ForeignKey(name = "fk_alunotreinos_treino"))
-    )
+    @Relationship(type = "ALUNO_TREINA", direction = Relationship.Direction.OUTGOING)
     private Set<Treino> treinos = new HashSet<>();
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AvaliacaoFisica> avaliacoesComoAluno = new ArrayList<>();
+    @Relationship(type = "INSTRUI", direction = Relationship.Direction.OUTGOING)
+    private Set<Treino> treinosInstrutor = new HashSet<>();
 
-    public Usuario() {
-    }
+    public Usuario() {}
 
     public Usuario(Long id, String nome, String email, String senha, LocalDate dataNascimento, Perfil perfil) {
         this.id = id;
@@ -126,12 +118,12 @@ public class Usuario implements Serializable {
         this.treinos.add(treino);
     }
 
-    public List<AvaliacaoFisica> getAvaliacoesComoAluno() {
-        return avaliacoesComoAluno;
+    public Set<Treino> getTreinosInstrutor() {
+        return treinosInstrutor;
     }
 
-    public void setAvaliacoesComoAluno(List<AvaliacaoFisica> avaliacoesComoAluno) {
-        this.avaliacoesComoAluno = avaliacoesComoAluno;
+    public void setTreinosInstrutor(Set<Treino> treinosInstrutor) {
+        this.treinosInstrutor = treinosInstrutor;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.barros.gestao_de_treinos.mappers;
 
 import com.barros.gestao_de_treinos.DTOs.GrupoMuscularDTO;
-import com.barros.gestao_de_treinos.entities.jpa.GrupoMuscular;
+import com.barros.gestao_de_treinos.entities.GrupoMuscular;
 
 public class GrupoMuscularMapper {
 

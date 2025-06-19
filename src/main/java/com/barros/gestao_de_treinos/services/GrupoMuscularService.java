@@ -1,6 +1,8 @@
 package com.barros.gestao_de_treinos.services;
 
+import com.barros.gestao_de_treinos.DTOs.GrupoMuscularDTO;
 import com.barros.gestao_de_treinos.entities.GrupoMuscular;
+import com.barros.gestao_de_treinos.mappers.GrupoMuscularMapper;
 import com.barros.gestao_de_treinos.repositories.GrupoMuscularRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;
@@ -27,13 +29,10 @@ public class GrupoMuscularService {
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public GrupoMuscular insert(GrupoMuscular obj) {
-        System.out.println("Tentando salvar: " + obj);
-        System.out.println("Repository class: " + repository.getClass());
-
-        GrupoMuscular saved = repository.save(obj);
-        System.out.println("Salvo com sucesso: " + saved);
-        return saved;
+    public GrupoMuscularDTO insert(GrupoMuscularDTO obj) {
+        GrupoMuscular entity = GrupoMuscularMapper.toEntity(obj);
+        GrupoMuscular saved = repository.save(entity);
+        return GrupoMuscularMapper.toDTO(saved);
     }
 
     public void delete(String id) {

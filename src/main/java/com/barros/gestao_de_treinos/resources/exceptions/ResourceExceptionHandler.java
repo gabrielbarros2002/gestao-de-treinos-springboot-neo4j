@@ -8,6 +8,7 @@ import jakarta.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -50,6 +51,33 @@ public class ResourceExceptionHandler {
                 request.getRequestURI(), errors);
         return ResponseEntity.status(status).body(err);
     }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<StandardError> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex,
+                                                                               HttpServletRequest request) {
+        String erro = "Erro de validação";
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        String message = "Um ou mais campos estão inválidos";
+
+        // Extrair os erros de campo
+        List<String> errors = ex.getBindingResult()
+                .getFieldErrors()
+                .stream()
+                .map(error -> String.format("Campo '%s': %s", error.getField(), error.getDefaultMessage()))
+                .toList();
+
+        StandardError err = new StandardError(
+                Instant.now(),
+                status.value(),
+                erro,
+                message,
+                request.getRequestURI(),
+                errors
+        );
+
+        return ResponseEntity.status(status).body(err);
+    }
+
 
     private String formatViolation(ConstraintViolation<?> violation) {
         String propertyPath = violation.getPropertyPath().toString();

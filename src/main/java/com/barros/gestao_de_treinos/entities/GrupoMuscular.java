@@ -17,8 +17,6 @@ public class GrupoMuscular implements Serializable {
     @GeneratedValue(UUIDStringGenerator.class)
     private String id;
 
-    @NotBlank(message = "O nome do grupo muscular é obrigatório")
-    @Size(min = 3, max = 50, message = "O nome deve ter entre {min} e {max} caracteres")
     private String nome;
 
     public GrupoMuscular() {}

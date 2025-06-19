@@ -5,7 +5,7 @@ import org.springframework.data.neo4j.repository.Neo4jRepository;
 
 import java.util.List;
 
-public interface AvaliacaoFisicaRepository extends Neo4jRepository<AvaliacaoFisica, Long> {
+public interface AvaliacaoFisicaNeo4jRepository extends Neo4jRepository<AvaliacaoFisica, Long> {
 
     List<AvaliacaoFisica> findByAlunoId(Long alunoId);
 

@@ -5,7 +5,7 @@ import org.springframework.data.neo4j.repository.Neo4jRepository;
 
 import java.util.List;
 
-public interface TreinoRepository extends Neo4jRepository<Treino, Long> {
+public interface TreinoNeo4jRepository extends Neo4jRepository<Treino, Long> {
 
     List<Treino> findByAlunosId(Long alunoId);
 

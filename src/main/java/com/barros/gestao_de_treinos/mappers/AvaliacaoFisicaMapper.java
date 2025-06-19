@@ -1,8 +1,8 @@
 package com.barros.gestao_de_treinos.mappers;
 
 import com.barros.gestao_de_treinos.DTOs.AvaliacaoFisicaDTO;
-import com.barros.gestao_de_treinos.entities.AvaliacaoFisica;
-import com.barros.gestao_de_treinos.entities.Usuario;
+import com.barros.gestao_de_treinos.entities.jpa.AvaliacaoFisica;
+import com.barros.gestao_de_treinos.entities.jpa.Usuario;
 
 public class AvaliacaoFisicaMapper {
 

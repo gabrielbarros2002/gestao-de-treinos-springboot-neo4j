@@ -1,7 +1,7 @@
 package com.barros.gestao_de_treinos.services;
 
-import com.barros.gestao_de_treinos.entities.PK.TreinoExercicioPK;
-import com.barros.gestao_de_treinos.entities.TreinoExercicio;
+import com.barros.gestao_de_treinos.entities.jpa.PK.TreinoExercicioPK;
+import com.barros.gestao_de_treinos.entities.jpa.TreinoExercicio;
 import com.barros.gestao_de_treinos.repositories.TreinoExercicioRepository;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

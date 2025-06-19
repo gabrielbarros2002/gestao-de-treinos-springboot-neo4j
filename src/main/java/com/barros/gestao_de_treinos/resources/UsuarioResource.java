@@ -1,6 +1,6 @@
 package com.barros.gestao_de_treinos.resources;
 
-import com.barros.gestao_de_treinos.entities.Usuario;
+import com.barros.gestao_de_treinos.entities.jpa.Usuario;
 import com.barros.gestao_de_treinos.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

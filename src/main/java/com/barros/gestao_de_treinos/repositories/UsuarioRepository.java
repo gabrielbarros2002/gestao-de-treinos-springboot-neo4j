@@ -1,6 +1,6 @@
 package com.barros.gestao_de_treinos.repositories;
 
-import com.barros.gestao_de_treinos.entities.Usuario;
+import com.barros.gestao_de_treinos.entities.jpa.Usuario;
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
 import org.springframework.data.jpa.repository.JpaRepository;
 

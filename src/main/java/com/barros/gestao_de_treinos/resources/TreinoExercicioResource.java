@@ -1,9 +1,9 @@
 package com.barros.gestao_de_treinos.resources;
 
-import com.barros.gestao_de_treinos.entities.Exercicio;
-import com.barros.gestao_de_treinos.entities.PK.TreinoExercicioPK;
-import com.barros.gestao_de_treinos.entities.Treino;
-import com.barros.gestao_de_treinos.entities.TreinoExercicio;
+import com.barros.gestao_de_treinos.entities.jpa.Exercicio;
+import com.barros.gestao_de_treinos.entities.jpa.PK.TreinoExercicioPK;
+import com.barros.gestao_de_treinos.entities.jpa.Treino;
+import com.barros.gestao_de_treinos.entities.jpa.TreinoExercicio;
 import com.barros.gestao_de_treinos.services.ExercicioService;
 import com.barros.gestao_de_treinos.services.TreinoExercicioService;
 import com.barros.gestao_de_treinos.services.TreinoService;

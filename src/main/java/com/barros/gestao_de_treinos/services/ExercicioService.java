@@ -1,6 +1,6 @@
 package com.barros.gestao_de_treinos.services;
 
-import com.barros.gestao_de_treinos.entities.Exercicio;
+import com.barros.gestao_de_treinos.entities.jpa.Exercicio;
 import com.barros.gestao_de_treinos.repositories.ExercicioRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;

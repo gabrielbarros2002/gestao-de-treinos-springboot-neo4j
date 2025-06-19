@@ -1,10 +1,10 @@
 package com.barros.gestao_de_treinos.mappers;
 
 import com.barros.gestao_de_treinos.DTOs.TreinoExercicioDTO;
-import com.barros.gestao_de_treinos.entities.Exercicio;
-import com.barros.gestao_de_treinos.entities.PK.TreinoExercicioPK;
-import com.barros.gestao_de_treinos.entities.Treino;
-import com.barros.gestao_de_treinos.entities.TreinoExercicio;
+import com.barros.gestao_de_treinos.entities.jpa.Exercicio;
+import com.barros.gestao_de_treinos.entities.jpa.PK.TreinoExercicioPK;
+import com.barros.gestao_de_treinos.entities.jpa.Treino;
+import com.barros.gestao_de_treinos.entities.jpa.TreinoExercicio;
 
 public class TreinoExercicioMapper {
 

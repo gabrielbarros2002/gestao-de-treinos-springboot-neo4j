@@ -1,6 +1,6 @@
 package com.barros.gestao_de_treinos.resources;
 
-import com.barros.gestao_de_treinos.entities.AvaliacaoFisica;
+import com.barros.gestao_de_treinos.entities.jpa.AvaliacaoFisica;
 import com.barros.gestao_de_treinos.services.AvaliacaoFisicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

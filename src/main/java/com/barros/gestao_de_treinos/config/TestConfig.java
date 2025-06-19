@@ -1,7 +1,7 @@
 package com.barros.gestao_de_treinos.config;
 
-import com.barros.gestao_de_treinos.entities.*;
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
+import com.barros.gestao_de_treinos.entities.jpa.*;
 import com.barros.gestao_de_treinos.repositories.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

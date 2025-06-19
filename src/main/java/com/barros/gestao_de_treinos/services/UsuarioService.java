@@ -1,7 +1,7 @@
 package com.barros.gestao_de_treinos.services;
 
-import com.barros.gestao_de_treinos.entities.Treino;
-import com.barros.gestao_de_treinos.entities.Usuario;
+import com.barros.gestao_de_treinos.entities.jpa.Treino;
+import com.barros.gestao_de_treinos.entities.jpa.Usuario;
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
 import com.barros.gestao_de_treinos.repositories.TreinoRepository;
 import com.barros.gestao_de_treinos.repositories.UsuarioRepository;

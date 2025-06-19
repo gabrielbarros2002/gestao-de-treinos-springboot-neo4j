@@ -2,10 +2,10 @@ package com.barros.gestao_de_treinos.services;
 
 import com.barros.gestao_de_treinos.DTOs.TreinoDTO;
 import com.barros.gestao_de_treinos.DTOs.TreinoExercicioDTO;
-import com.barros.gestao_de_treinos.entities.Exercicio;
-import com.barros.gestao_de_treinos.entities.Treino;
-import com.barros.gestao_de_treinos.entities.TreinoExercicio;
-import com.barros.gestao_de_treinos.entities.Usuario;
+import com.barros.gestao_de_treinos.entities.jpa.Exercicio;
+import com.barros.gestao_de_treinos.entities.jpa.Treino;
+import com.barros.gestao_de_treinos.entities.jpa.TreinoExercicio;
+import com.barros.gestao_de_treinos.entities.jpa.Usuario;
 import com.barros.gestao_de_treinos.mappers.TreinoExercicioMapper;
 import com.barros.gestao_de_treinos.mappers.TreinoMapper;
 import com.barros.gestao_de_treinos.repositories.ExercicioRepository;

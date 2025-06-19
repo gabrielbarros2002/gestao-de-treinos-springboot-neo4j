@@ -1,7 +1,7 @@
 package com.barros.gestao_de_treinos.resources;
 
 import com.barros.gestao_de_treinos.entities.jpa.Exercicio;
-import com.barros.gestao_de_treinos.services.ExercicioService;
+import com.barros.gestao_de_treinos.services.jpa.ExercicioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

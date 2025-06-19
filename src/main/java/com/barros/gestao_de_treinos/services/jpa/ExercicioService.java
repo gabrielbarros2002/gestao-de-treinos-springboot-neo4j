@@ -1,4 +1,4 @@
-package com.barros.gestao_de_treinos.services;
+package com.barros.gestao_de_treinos.services.jpa;
 
 import com.barros.gestao_de_treinos.entities.jpa.Exercicio;
 import com.barros.gestao_de_treinos.repositories.jpa.ExercicioRepository;

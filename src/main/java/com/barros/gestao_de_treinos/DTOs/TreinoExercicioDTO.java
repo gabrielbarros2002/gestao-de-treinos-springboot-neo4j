@@ -5,7 +5,7 @@ import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 public class TreinoExercicioDTO {
 
     private String idTreino;
-    private Long idExercicio;
+    private String idExercicio;
     private String nomeExercicio;
     private String nomeGrupoMuscular;
     private Integer series;
@@ -23,11 +23,11 @@ public class TreinoExercicioDTO {
         this.idTreino = idTreino;
     }
 
-    public Long getIdExercicio() {
+    public String getIdExercicio() {
         return idExercicio;
     }
 
-    public void setIdExercicio(Long idExercicio) {
+    public void setIdExercicio(String idExercicio) {
         this.idExercicio = idExercicio;
     }
 

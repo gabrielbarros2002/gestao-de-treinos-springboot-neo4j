@@ -33,6 +33,14 @@ public class TreinoExercicio implements Serializable {
         this.ordem = ordem;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Exercicio getExercicio() {
         return exercicio;
     }

@@ -1,8 +1,5 @@
 package com.barros.gestao_de_treinos.entities;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
@@ -19,14 +16,10 @@ public class Exercicio implements Serializable {
     @GeneratedValue(UUIDStringGenerator.class)
     private String id;
 
-    @NotBlank(message = "O nome do exercício é obrigatório")
-    @Size(min = 3, max = 100, message = "O nome deve ter entre {min} e {max} caracteres")
     private String nome;
 
-    @Size(max = 500, message = "A descrição não pode ultrapassar {max} caracteres")
     private String descricao;
 
-    @NotNull(message = "O grupo muscular é obrigatório")
     @Relationship(type = "PERTENCE_A", direction = Relationship.Direction.OUTGOING)
     private GrupoMuscular grupoMuscular;
 

@@ -1,41 +1,53 @@
 package com.barros.gestao_de_treinos.DTOs;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 
 public class ExercicioDTO {
 
-    private String id;
-    private String nome;
-    private String descricao;
+    private String idExercicio;
+
+    @NotBlank(message = "O nome do exercício é obrigatório")
+    @Size(min = 3, max = 100, message = "O nome deve ter entre {min} e {max} caracteres")
+    private String nomeExercicio;
+
+    @Size(max = 500, message = "A descrição não pode ultrapassar {max} caracteres")
+    private String descricaoExercicio;
+
+    @NotNull(message = "O grupo muscular é obrigatório")
     private String idGrupoMuscular;
+
     private String nomeGrupoMuscular;
 
     public ExercicioDTO() {
         iniciarAtributosEmBranco(this);
     }
 
-    public String getId() {
-        return id;
+    public String getIdExercicio() {
+        return idExercicio;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdExercicio(String idExercicio) {
+        this.idExercicio = idExercicio;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeExercicio() {
+        return nomeExercicio;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeExercicio(String nomeExercicio) {
+        this.nomeExercicio = nomeExercicio;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescricaoExercicio() {
+        return descricaoExercicio;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescricaoExercicio(String descricaoExercicio) {
+        this.descricaoExercicio = descricaoExercicio;
     }
 
     public String getIdGrupoMuscular() {

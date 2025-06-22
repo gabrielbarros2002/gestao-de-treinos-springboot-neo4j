@@ -34,7 +34,7 @@ public class GrupoMuscularResource {
     @PostMapping
     public ResponseEntity<GrupoMuscularDTO> insert(@Valid @RequestBody GrupoMuscularDTO obj) {
         obj = service.insert(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdGrupoMuscular()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 

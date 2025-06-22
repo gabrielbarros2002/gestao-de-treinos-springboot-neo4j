@@ -7,8 +7,8 @@ import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 
 public class AvaliacaoFisicaDTO {
 
-    private String id;
-    private LocalDate data;
+    private String idAvaliacao;
+    private LocalDate dataAvaliacao;
     private BigDecimal peso;
     private BigDecimal altura;
     private BigDecimal imc;
@@ -23,20 +23,20 @@ public class AvaliacaoFisicaDTO {
         iniciarAtributosEmBranco(this);
     }
 
-    public String getId() {
-        return id;
+    public String getIdAvaliacao() {
+        return idAvaliacao;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdAvaliacao(String idAvaliacao) {
+        this.idAvaliacao = idAvaliacao;
     }
 
-    public LocalDate getData() {
-        return data;
+    public LocalDate getDataAvaliacao() {
+        return dataAvaliacao;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDataAvaliacao(LocalDate dataAvaliacao) {
+        this.dataAvaliacao = dataAvaliacao;
     }
 
     public BigDecimal getPeso() {

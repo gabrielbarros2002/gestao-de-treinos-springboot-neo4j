@@ -6,62 +6,62 @@ import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 
 public class UsuarioDTO {
 
-    private String id;
-    private String nome;
-    private String email;
-    private String senha;
-    private LocalDate dataNascimento;
-    private String perfil;
+    private String idUsuario;
+    private String nomeUsuario;
+    private String emailUsuario;
+    private String senhaUsuario;
+    private LocalDate dataNascimentoUsuario;
+    private String perfilUsuario;
 
     public UsuarioDTO() {
         iniciarAtributosEmBranco(this);
     }
 
-    public String getId() {
-        return id;
+    public String getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeUsuario() {
+        return nomeUsuario;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailUsuario() {
+        return emailUsuario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailUsuario(String emailUsuario) {
+        this.emailUsuario = emailUsuario;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getSenhaUsuario() {
+        return senhaUsuario;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setSenhaUsuario(String senhaUsuario) {
+        this.senhaUsuario = senhaUsuario;
     }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
+    public LocalDate getDataNascimentoUsuario() {
+        return dataNascimentoUsuario;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setDataNascimentoUsuario(LocalDate dataNascimentoUsuario) {
+        this.dataNascimentoUsuario = dataNascimentoUsuario;
     }
 
-    public String getPerfil() {
-        return perfil;
+    public String getPerfilUsuario() {
+        return perfilUsuario;
     }
 
-    public void setPerfil(String perfil) {
-        this.perfil = perfil;
+    public void setPerfilUsuario(String perfilUsuario) {
+        this.perfilUsuario = perfilUsuario;
     }
 }

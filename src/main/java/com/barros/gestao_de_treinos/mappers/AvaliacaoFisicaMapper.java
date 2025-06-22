@@ -8,8 +8,8 @@ public class AvaliacaoFisicaMapper {
 
     public static AvaliacaoFisicaDTO toDTO(AvaliacaoFisica entity) {
         AvaliacaoFisicaDTO dto = new AvaliacaoFisicaDTO();
-        dto.setId(entity.getId());
-        dto.setData(entity.getData());
+        dto.setIdAvaliacao(entity.getId());
+        dto.setDataAvaliacao(entity.getData());
         dto.setPeso(entity.getPeso());
         dto.setAltura(entity.getAltura());
         dto.setPercentualGordura(entity.getPercentualGordura());
@@ -26,15 +26,15 @@ public class AvaliacaoFisicaMapper {
 
     public static AvaliacaoFisica toEntity(AvaliacaoFisicaDTO dto) {
         AvaliacaoFisica entity = new AvaliacaoFisica();
-        entity.setId(dto.getId());
-        entity.setData(dto.getData());
+        entity.setId(dto.getIdAvaliacao());
+        entity.setData(dto.getDataAvaliacao());
         entity.setPeso(dto.getPeso());
         entity.setAltura(dto.getAltura());
         entity.setPercentualGordura(dto.getPercentualGordura());
         entity.setMassaMuscularKg(dto.getMassaMuscularKg());
 
         entity.setAluno(new Usuario());
-        entity.getAluno().setId(dto.getId());
+        entity.getAluno().setId(dto.getIdAvaliacao());
         entity.getAluno().setNome(dto.getNomeAluno());
 
         entity.setInstrutor(new Usuario());

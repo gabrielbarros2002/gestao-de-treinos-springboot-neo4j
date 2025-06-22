@@ -10,14 +10,14 @@ public class UsuarioMapper {
         if (entity == null) return null;
 
         UsuarioDTO dto = new UsuarioDTO();
-        dto.setId(entity.getId());
-        dto.setNome(entity.getNome());
-        dto.setEmail(entity.getEmail());
-        dto.setSenha(entity.getSenha());
-        dto.setDataNascimento(entity.getDataNascimento());
+        dto.setIdUsuario(entity.getId());
+        dto.setNomeUsuario(entity.getNome());
+        dto.setEmailUsuario(entity.getEmail());
+        dto.setSenhaUsuario(entity.getSenha());
+        dto.setDataNascimentoUsuario(entity.getDataNascimento());
 
         if (entity.getPerfil() != null) {
-            dto.setPerfil(entity.getPerfil().getCodigo());
+            dto.setPerfilUsuario(entity.getPerfil().getCodigo());
         }
 
         return dto;
@@ -27,14 +27,14 @@ public class UsuarioMapper {
         if (dto == null) return null;
 
         Usuario entity = new Usuario();
-        entity.setId(dto.getId());
-        entity.setNome(dto.getNome());
-        entity.setEmail(dto.getEmail());
-        entity.setSenha(dto.getSenha());
-        entity.setDataNascimento(dto.getDataNascimento());
+        entity.setId(dto.getIdUsuario());
+        entity.setNome(dto.getNomeUsuario());
+        entity.setEmail(dto.getEmailUsuario());
+        entity.setSenha(dto.getSenhaUsuario());
+        entity.setDataNascimento(dto.getDataNascimentoUsuario());
 
-        if (dto.getPerfil() != null) {
-            entity.setPerfil(Perfil.fromCodigo(dto.getPerfil()));
+        if (dto.getPerfilUsuario() != null) {
+            entity.setPerfil(Perfil.fromCodigo(dto.getPerfilUsuario()));
         }
 
         return entity;

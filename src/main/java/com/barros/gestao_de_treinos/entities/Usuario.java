@@ -9,6 +9,7 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -20,8 +21,8 @@ import java.util.Set;
 public class Usuario implements Serializable {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(UUIDStringGenerator.class)
+    private String id;
 
     @NotBlank(message = "O nome é obrigatório")
     @Size(min = 3, max = 100, message = "O nome deve ter entre {min} e {max} caracteres")
@@ -49,7 +50,7 @@ public class Usuario implements Serializable {
 
     public Usuario() {}
 
-    public Usuario(Long id, String nome, String email, String senha, LocalDate dataNascimento, Perfil perfil) {
+    public Usuario(String id, String nome, String email, String senha, LocalDate dataNascimento, Perfil perfil) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -58,11 +59,11 @@ public class Usuario implements Serializable {
         this.perfil = perfil;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

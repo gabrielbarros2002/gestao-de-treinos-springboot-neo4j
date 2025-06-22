@@ -7,27 +7,27 @@ import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 
 public class AvaliacaoFisicaDTO {
 
-    private Long id;
+    private String id;
     private LocalDate data;
     private BigDecimal peso;
     private BigDecimal altura;
     private BigDecimal imc;
     private BigDecimal percentualGordura;
     private BigDecimal massaMuscularKg;
-    private Long idInstrutor;
+    private String idInstrutor;
     private String nomeInstrutor;
-    private Long idAluno;
+    private String idAluno;
     private String nomeAluno;
 
     public AvaliacaoFisicaDTO() {
         iniciarAtributosEmBranco(this);
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -79,11 +79,11 @@ public class AvaliacaoFisicaDTO {
         this.massaMuscularKg = massaMuscularKg;
     }
 
-    public Long getIdInstrutor() {
+    public String getIdInstrutor() {
         return idInstrutor;
     }
 
-    public void setIdInstrutor(Long idInstrutor) {
+    public void setIdInstrutor(String idInstrutor) {
         this.idInstrutor = idInstrutor;
     }
 
@@ -95,11 +95,11 @@ public class AvaliacaoFisicaDTO {
         this.nomeInstrutor = nomeInstrutor;
     }
 
-    public Long getIdAluno() {
+    public String getIdAluno() {
         return idAluno;
     }
 
-    public void setIdAluno(Long idAluno) {
+    public void setIdAluno(String idAluno) {
         this.idAluno = idAluno;
     }
 

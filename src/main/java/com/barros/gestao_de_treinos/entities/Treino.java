@@ -8,6 +8,7 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
 
 import java.io.Serializable;
 import java.util.*;
@@ -16,8 +17,8 @@ import java.util.*;
 public class Treino implements Serializable {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(UUIDStringGenerator.class)
+    private String id;
 
     @NotBlank(message = "O nome do treino é obrigatório")
     @Size(min = 3, max = 100, message = "O nome deve ter entre {min} e {max} caracteres")
@@ -39,17 +40,17 @@ public class Treino implements Serializable {
     public Treino() {
     }
 
-    public Treino(Long id, String nome, Usuario instrutor) {
+    public Treino(String id, String nome, Usuario instrutor) {
         this.id = id;
         this.nome = nome;
         this.instrutor = instrutor;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

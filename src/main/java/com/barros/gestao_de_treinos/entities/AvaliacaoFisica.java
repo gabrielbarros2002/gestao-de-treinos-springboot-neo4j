@@ -7,6 +7,7 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -18,8 +19,8 @@ import java.util.Objects;
 public class AvaliacaoFisica implements Serializable {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(UUIDStringGenerator.class)
+    private String id;
 
     @NotNull(message = "A data da avaliação é obrigatória")
     @PastOrPresent(message = "A data da avaliação não pode ser no futuro")
@@ -53,7 +54,7 @@ public class AvaliacaoFisica implements Serializable {
 
     public AvaliacaoFisica() {}
 
-    public AvaliacaoFisica(Long id, LocalDate data, BigDecimal peso, BigDecimal altura, BigDecimal percentualGordura,
+    public AvaliacaoFisica(String id, LocalDate data, BigDecimal peso, BigDecimal altura, BigDecimal percentualGordura,
             BigDecimal massaMuscularKg, Usuario instrutor, Usuario aluno) {
         this.id = id;
         this.data = data;
@@ -73,11 +74,11 @@ public class AvaliacaoFisica implements Serializable {
         }
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

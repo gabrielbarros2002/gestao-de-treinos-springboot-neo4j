@@ -6,7 +6,7 @@ import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 
 public class UsuarioDTO {
 
-    private Long id;
+    private String id;
     private String nome;
     private String email;
     private String senha;
@@ -17,11 +17,11 @@ public class UsuarioDTO {
         iniciarAtributosEmBranco(this);
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

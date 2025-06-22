@@ -45,7 +45,7 @@ public class GrupoMuscularResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<GrupoMuscular> update(@PathVariable String id, @RequestBody GrupoMuscular obj) {
+    public ResponseEntity<GrupoMuscularDTO> update(@PathVariable String id, @RequestBody GrupoMuscularDTO obj) {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
     }

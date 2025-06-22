@@ -51,13 +51,14 @@ public class GrupoMuscularService {
         }
     }
 
-    public GrupoMuscular update(String id, GrupoMuscular obj) {
+    public GrupoMuscularDTO update(String id, GrupoMuscularDTO obj) {
         GrupoMuscular entity = findEntityById(id);
         updateData(entity, obj);
-        return repository.save(entity);
+        repository.save(entity);
+        return GrupoMuscularMapper.toDTO(entity);
     }
 
-    private void updateData(GrupoMuscular entity, GrupoMuscular obj) {
-        entity.setNome(obj.getNome());
+    private void updateData(GrupoMuscular entity, GrupoMuscularDTO obj) {
+        entity.setNome(obj.getNomeGrupoMuscular());
     }
 }

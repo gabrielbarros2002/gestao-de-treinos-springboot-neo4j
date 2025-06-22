@@ -1,6 +1,6 @@
 package com.barros.gestao_de_treinos.resources;
 
-import com.barros.gestao_de_treinos.entities.Exercicio;
+import com.barros.gestao_de_treinos.DTOs.ExercicioDTO;
 import com.barros.gestao_de_treinos.services.ExercicioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,21 +18,21 @@ public class ExercicioResource {
     private ExercicioService service;
 
     @GetMapping
-    public ResponseEntity<List<Exercicio>> findAll() {
-        List<Exercicio> list = service.findAll();
+    public ResponseEntity<List<ExercicioDTO>> findAll() {
+        List<ExercicioDTO> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Exercicio> findById(@PathVariable String id) {
-        Exercicio obj = service.findById(id);
+    public ResponseEntity<ExercicioDTO> findById(@PathVariable String id) {
+        ExercicioDTO obj = service.findDtoById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @PostMapping
-    public ResponseEntity<Exercicio> insert(@RequestBody Exercicio obj) {
+    public ResponseEntity<ExercicioDTO> insert(@RequestBody ExercicioDTO obj) {
         obj = service.insert(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdExercicio()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 
@@ -43,7 +43,7 @@ public class ExercicioResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Exercicio> update(@PathVariable String id, @RequestBody Exercicio obj) {
+    public ResponseEntity<ExercicioDTO> update(@PathVariable String id, @RequestBody ExercicioDTO obj) {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
     }

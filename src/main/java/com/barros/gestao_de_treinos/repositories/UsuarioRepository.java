@@ -7,7 +7,7 @@ import org.springframework.data.neo4j.repository.Neo4jRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface UsuarioRepository extends Neo4jRepository<Usuario, Long> {
+public interface UsuarioRepository extends Neo4jRepository<Usuario, String> {
 
     Optional<Usuario> findByEmailAndSenha(String email, String senha);
 

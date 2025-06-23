@@ -24,28 +24,20 @@ public class Usuario implements Serializable {
     @GeneratedValue(UUIDStringGenerator.class)
     private String id;
 
-    @NotBlank(message = "O nome é obrigatório")
-    @Size(min = 3, max = 100, message = "O nome deve ter entre {min} e {max} caracteres")
     private String nome;
 
-    @NotBlank(message = "O email é obrigatório")
-    @Email(message = "Por favor, forneça um endereço de email válido")
     private String email;
 
-    @NotBlank(message = "A senha é obrigatória")
-    @Size(min = 5, message = "A senha deve ter no mínimo {min} caracteres")
     private String senha;
 
-    @NotNull(message = "A data de nascimento é obrigatória")
     private LocalDate dataNascimento;
 
-    @NotNull(message = "O perfil é obrigatório")
     private Perfil perfil;
 
-    @Relationship(type = "ALUNO_TREINA", direction = Relationship.Direction.OUTGOING)
+    @Relationship(type = "EXECUTA", direction = Relationship.Direction.OUTGOING)
     private Set<Treino> treinos = new HashSet<>();
 
-    @Relationship(type = "INSTRUI", direction = Relationship.Direction.OUTGOING)
+    @Relationship(type = "ELABORA", direction = Relationship.Direction.OUTGOING)
     private Set<Treino> treinosInstrutor = new HashSet<>();
 
     public Usuario() {}

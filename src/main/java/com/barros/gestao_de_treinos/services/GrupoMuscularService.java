@@ -37,6 +37,7 @@ public class GrupoMuscularService {
 
     public GrupoMuscularDTO insert(GrupoMuscularDTO obj) {
         GrupoMuscular entity = GrupoMuscularMapper.toEntity(obj);
+        entity.setId(null);
         GrupoMuscular saved = repository.save(entity);
         return GrupoMuscularMapper.toDTO(saved);
     }

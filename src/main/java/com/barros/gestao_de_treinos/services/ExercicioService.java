@@ -1,14 +1,9 @@
 package com.barros.gestao_de_treinos.services;
 
 import com.barros.gestao_de_treinos.DTOs.ExercicioDTO;
-import com.barros.gestao_de_treinos.DTOs.GrupoMuscularDTO;
 import com.barros.gestao_de_treinos.entities.Exercicio;
-import com.barros.gestao_de_treinos.entities.Exercicio;
-import com.barros.gestao_de_treinos.entities.GrupoMuscular;
-import com.barros.gestao_de_treinos.mappers.ExercicioMapper;
 import com.barros.gestao_de_treinos.mappers.ExercicioMapper;
 import com.barros.gestao_de_treinos.repositories.ExercicioRepository;
-import com.barros.gestao_de_treinos.repositories.GrupoMuscularRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +40,7 @@ public class ExercicioService {
 
     public ExercicioDTO insert(ExercicioDTO obj) {
         Exercicio entity = ExercicioMapper.toEntity(obj);
+        entity.setId(null);
         Exercicio saved = repository.save(entity);
         return ExercicioMapper.toDTO(saved);
     }

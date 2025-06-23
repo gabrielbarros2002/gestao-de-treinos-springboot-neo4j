@@ -6,11 +6,9 @@ import com.barros.gestao_de_treinos.entities.Exercicio;
 import com.barros.gestao_de_treinos.entities.Treino;
 import com.barros.gestao_de_treinos.entities.TreinoExercicio;
 import com.barros.gestao_de_treinos.entities.Usuario;
-import com.barros.gestao_de_treinos.mappers.ExercicioMapper;
 import com.barros.gestao_de_treinos.mappers.TreinoExercicioMapper;
 import com.barros.gestao_de_treinos.mappers.TreinoMapper;
 import com.barros.gestao_de_treinos.repositories.TreinoRepository;
-import com.barros.gestao_de_treinos.repositories.UsuarioRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +28,7 @@ public class TreinoService {
     private TreinoRepository repository;
 
     @Autowired
-    UsuarioRepository usuarioRepository;
+    UsuarioService usuarioService;
 
     @Autowired
     private ExercicioService exercicioService;
@@ -54,8 +52,9 @@ public class TreinoService {
     }
 
     public TreinoDTO insert(TreinoDTO obj) {
-        Usuario instrutor = new Usuario();
+        Usuario instrutor = usuarioService.findEntityById(obj.getIdInstrutor());
         Treino entity = TreinoMapper.toEntity(obj, instrutor);
+        entity.setId(null);
         Treino saved = repository.save(entity);
         return TreinoMapper.toDTO(saved);
     }
@@ -77,12 +76,11 @@ public class TreinoService {
         return TreinoMapper.toDTO(entity);
     }
 
-    private TreinoDTO updateData(Treino entity, TreinoDTO dto) {
+    private void updateData(Treino entity, TreinoDTO dto) {
         entity.setNome(dto.getNomeTreino());
 
         if (dto.getIdInstrutor() != null) {
-            Usuario instrutor = usuarioRepository.findById(dto.getIdInstrutor())
-                    .orElseThrow(() -> new ResourceNotFoundException(dto.getIdInstrutor()));
+            Usuario instrutor = usuarioService.findEntityById(dto.getIdInstrutor());
             entity.setInstrutor(instrutor);
         }
 
@@ -105,8 +103,6 @@ public class TreinoService {
                 .map(TreinoExercicioMapper::toDTO)
                 .collect(Collectors.toList());
         retorno.setExercicios(exerciciosDTO);
-
-        return retorno;
     }
 
     public List<Treino> buscarTreinosPorAluno(Long alunoId) {

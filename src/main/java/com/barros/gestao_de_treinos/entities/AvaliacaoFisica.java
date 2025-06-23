@@ -22,28 +22,16 @@ public class AvaliacaoFisica implements Serializable {
     @GeneratedValue(UUIDStringGenerator.class)
     private String id;
 
-    @NotNull(message = "A data da avaliação é obrigatória")
-    @PastOrPresent(message = "A data da avaliação não pode ser no futuro")
     private LocalDate data;
 
-    @NotNull(message = "O peso é obrigatório")
-    @Positive(message = "O peso deve ser maior que zero")
     private BigDecimal peso;
 
-    @NotNull(message = "A altura é obrigatória")
-    @Positive(message = "A altura deve ser maior que zero")
     private BigDecimal altura;
 
-    @NotNull(message = "O IMC é obrigatório")
-    @Positive(message = "O IMC deve ser maior que zero")
     private BigDecimal imc;
 
-    @NotNull(message = "O percentual de gordura é obrigatório")
-    @Positive(message = "O percentual de gordura deve ser maior que zero")
     private BigDecimal percentualGordura;
 
-    @NotNull(message = "A massa muscular é obrigatória")
-    @Positive(message = "A massa muscular deve ser maior que zero")
     private BigDecimal massaMuscularKg;
 
     @Relationship(type = "REALIZADA_POR", direction = Relationship.Direction.OUTGOING)

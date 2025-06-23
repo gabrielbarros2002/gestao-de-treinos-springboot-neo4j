@@ -1,5 +1,9 @@
 package com.barros.gestao_de_treinos.DTOs;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Positive;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -8,15 +12,39 @@ import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 public class AvaliacaoFisicaDTO {
 
     private String idAvaliacao;
+
+    @NotNull(message = "A data da avaliação é obrigatória")
+    @PastOrPresent(message = "A data da avaliação não pode ser no futuro")
     private LocalDate dataAvaliacao;
+
+    @NotNull(message = "O peso é obrigatório")
+    @Positive(message = "O peso deve ser maior que zero")
     private BigDecimal peso;
+
+    @NotNull(message = "A altura é obrigatória")
+    @Positive(message = "A altura deve ser maior que zero")
     private BigDecimal altura;
+
+    @NotNull(message = "O IMC é obrigatório")
+    @Positive(message = "O IMC deve ser maior que zero")
     private BigDecimal imc;
+
+    @NotNull(message = "O percentual de gordura é obrigatório")
+    @Positive(message = "O percentual de gordura deve ser maior que zero")
     private BigDecimal percentualGordura;
+
+    @NotNull(message = "A massa muscular é obrigatória")
+    @Positive(message = "A massa muscular deve ser maior que zero")
     private BigDecimal massaMuscularKg;
+
+    @NotNull(message = "O id do instrutor avaliador é obrigatório")
     private String idInstrutor;
+
     private String nomeInstrutor;
+
+    @NotNull(message = "O id do aluno avaliado é obrigatório")
     private String idAluno;
+
     private String nomeAluno;
 
     public AvaliacaoFisicaDTO() {

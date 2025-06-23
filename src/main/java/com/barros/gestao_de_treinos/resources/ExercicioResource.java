@@ -2,6 +2,7 @@ package com.barros.gestao_de_treinos.resources;
 
 import com.barros.gestao_de_treinos.DTOs.ExercicioDTO;
 import com.barros.gestao_de_treinos.services.ExercicioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class ExercicioResource {
     }
 
     @PostMapping
-    public ResponseEntity<ExercicioDTO> insert(@RequestBody ExercicioDTO obj) {
+    public ResponseEntity<ExercicioDTO> insert(@Valid @RequestBody ExercicioDTO obj) {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdExercicio()).toUri();
         return ResponseEntity.created(uri).body(obj);
@@ -43,7 +44,7 @@ public class ExercicioResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ExercicioDTO> update(@PathVariable String id, @RequestBody ExercicioDTO obj) {
+    public ResponseEntity<ExercicioDTO> update(@PathVariable String id, @Valid @RequestBody ExercicioDTO obj) {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
     }

@@ -13,7 +13,7 @@ import java.util.Objects;
 public class TreinoExercicio implements Serializable {
 
     @Id
-    @GeneratedValue(UUIDStringGenerator.class)
+    @GeneratedValue
     private String id;
 
     @TargetNode
@@ -26,7 +26,8 @@ public class TreinoExercicio implements Serializable {
     public TreinoExercicio() {
     }
 
-    public TreinoExercicio(Exercicio exercicio, int series, int repeticoes, int ordem) {
+    public TreinoExercicio(String id, Exercicio exercicio, int series, int repeticoes, int ordem) {
+        this.id = id;
         this.exercicio = exercicio;
         this.series = series;
         this.repeticoes = repeticoes;

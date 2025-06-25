@@ -1,5 +1,9 @@
 package com.barros.gestao_de_treinos.DTOs;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.util.List;
 
 import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
@@ -7,9 +11,17 @@ import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 public class TreinoDTO {
 
     private String idTreino;
+
+    @NotBlank(message = "O nome do treino é obrigatório")
+    @Size(min = 3, max = 100, message = "O nome deve ter entre {min} e {max} caracteres")
     private String nomeTreino;
+
+    @NotNull(message = "O treino deve conter exercícios")
     private List<TreinoExercicioDTO> exercicios;
+
+    @NotNull(message = "O id do instrutor é obrigatório")
     private String idInstrutor;
+
     private String nomeInstrutor;
 
     public TreinoDTO() {

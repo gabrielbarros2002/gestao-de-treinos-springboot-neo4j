@@ -20,7 +20,7 @@ public class Exercicio implements Serializable {
 
     private String descricao;
 
-    @Relationship(type = "PERTENCE_A", direction = Relationship.Direction.OUTGOING)
+    @Relationship(type = "TRABALHA", direction = Relationship.Direction.OUTGOING)
     private GrupoMuscular grupoMuscular;
 
     public Exercicio() {}

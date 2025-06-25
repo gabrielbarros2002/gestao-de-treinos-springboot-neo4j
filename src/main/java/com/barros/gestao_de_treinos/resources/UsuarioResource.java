@@ -1,7 +1,6 @@
 package com.barros.gestao_de_treinos.resources;
 
 import com.barros.gestao_de_treinos.DTOs.UsuarioDTO;
-import com.barros.gestao_de_treinos.entities.Usuario;
 import com.barros.gestao_de_treinos.services.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,8 +68,8 @@ public class UsuarioResource {
     }
 
     @GetMapping("/instrutores")
-    public ResponseEntity<List<Usuario>> findAllInstrutores() {
-        List<Usuario> alunos = service.findAllInstrutores();
+    public ResponseEntity<List<UsuarioDTO>> findAllInstrutores() {
+        List<UsuarioDTO> alunos = service.findAllInstrutores();
         return ResponseEntity.ok().body(alunos);
     }
 

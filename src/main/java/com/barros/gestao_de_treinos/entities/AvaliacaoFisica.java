@@ -1,8 +1,5 @@
 package com.barros.gestao_de_treinos.entities;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Positive;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
@@ -34,7 +31,7 @@ public class AvaliacaoFisica implements Serializable {
 
     private BigDecimal massaMuscularKg;
 
-    @Relationship(type = "REALIZADA_POR", direction = Relationship.Direction.OUTGOING)
+    @Relationship(type = "REALIZADA_POR_ALUNO", direction = Relationship.Direction.OUTGOING)
     private Usuario aluno;
 
     @Relationship(type = "REALIZADA_POR_INSTRUTOR", direction = Relationship.Direction.OUTGOING)

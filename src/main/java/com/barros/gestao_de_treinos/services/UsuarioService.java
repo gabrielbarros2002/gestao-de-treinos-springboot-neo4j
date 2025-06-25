@@ -1,9 +1,11 @@
 package com.barros.gestao_de_treinos.services;
 
 import com.barros.gestao_de_treinos.DTOs.UsuarioDTO;
+import com.barros.gestao_de_treinos.entities.Treino;
 import com.barros.gestao_de_treinos.entities.Usuario;
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
 import com.barros.gestao_de_treinos.mappers.UsuarioMapper;
+import com.barros.gestao_de_treinos.repositories.TreinoRepository;
 import com.barros.gestao_de_treinos.repositories.UsuarioRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;
@@ -12,6 +14,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +25,7 @@ public class UsuarioService {
     private UsuarioRepository repository;
 
     @Autowired
-    private TreinoService treinoService;
+    private TreinoRepository treinoRepository;
 
     public List<UsuarioDTO> findAll() {
         List<Usuario> entityList =  repository.findAll();
@@ -41,8 +44,9 @@ public class UsuarioService {
 
     public UsuarioDTO insert(UsuarioDTO obj) {
         Usuario entity = UsuarioMapper.toEntity(obj);
-        Usuario entitySalvo = repository.save(entity);
-        return UsuarioMapper.toDTO(entitySalvo);
+        entity.setId(null);
+        repository.save(entity);
+        return UsuarioMapper.toDTO(entity);
     }
 
     public void delete(String id) {
@@ -58,7 +62,8 @@ public class UsuarioService {
     public UsuarioDTO update(String id, UsuarioDTO obj) {
         Usuario entity = findEntityById(id);
         updateData(entity, obj);
-        return UsuarioMapper.toDTO(entity);
+        Usuario saved = repository.save(entity);
+        return UsuarioMapper.toDTO(saved);
     }
 
     private void updateData(Usuario entity, UsuarioDTO obj) {
@@ -66,6 +71,16 @@ public class UsuarioService {
         entity.setEmail(obj.getEmailUsuario());
         entity.setDataNascimento(obj.getDataNascimentoUsuario());
         entity.setSenha(obj.getSenhaUsuario());
+
+        List<Treino> treinosAtualizados = Optional.ofNullable(obj.getTreinos())
+                .orElseThrow(() -> new RuntimeException("Treinos não foram enviados"))
+                .stream()
+                .map(t -> treinoRepository.findById(t.getIdTreino())
+                        .orElseThrow(() -> new RuntimeException("Treino com ID " + t.getIdTreino() + " não encontrado")))
+                .toList();
+
+        entity.getTreinos().clear();
+        entity.getTreinos().addAll(treinosAtualizados);
     }
 
     public UsuarioDTO autenticar(String email, String senha) {
@@ -78,7 +93,8 @@ public class UsuarioService {
         return entityList.stream().map(UsuarioMapper::toDTO).toList();
     }
 
-    public List<Usuario> findAllInstrutores() {
-        return repository.findByPerfil(Perfil.INSTRUTOR);
+    public List<UsuarioDTO> findAllInstrutores() {
+        List<Usuario> entityList = repository.findByPerfil(Perfil.INSTRUTOR);
+        return entityList.stream().map(UsuarioMapper::toDTO).toList();
     }
 }

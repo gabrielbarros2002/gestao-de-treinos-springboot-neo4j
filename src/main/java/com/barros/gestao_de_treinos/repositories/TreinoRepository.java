@@ -7,6 +7,4 @@ import java.util.List;
 
 public interface TreinoRepository extends Neo4jRepository<Treino, String> {
 
-    List<Treino> findByAlunosId(Long alunoId);
-
 }

@@ -1,10 +1,6 @@
 package com.barros.gestao_de_treinos.entities;
 
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
@@ -34,11 +30,8 @@ public class Usuario implements Serializable {
 
     private Perfil perfil;
 
-    @Relationship(type = "EXECUTA", direction = Relationship.Direction.OUTGOING)
+    @Relationship(type = "ATRIBUIDO_PARA", direction = Relationship.Direction.INCOMING)
     private Set<Treino> treinos = new HashSet<>();
-
-    @Relationship(type = "ELABORA", direction = Relationship.Direction.OUTGOING)
-    private Set<Treino> treinosInstrutor = new HashSet<>();
 
     public Usuario() {}
 
@@ -109,14 +102,6 @@ public class Usuario implements Serializable {
 
     public void addTreino(Treino treino) {
         this.treinos.add(treino);
-    }
-
-    public Set<Treino> getTreinosInstrutor() {
-        return treinosInstrutor;
-    }
-
-    public void setTreinosInstrutor(Set<Treino> treinosInstrutor) {
-        this.treinosInstrutor = treinosInstrutor;
     }
 
     @Override

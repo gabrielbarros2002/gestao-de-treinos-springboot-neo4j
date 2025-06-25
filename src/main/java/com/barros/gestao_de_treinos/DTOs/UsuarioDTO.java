@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 
@@ -30,6 +32,8 @@ public class UsuarioDTO {
 
     @NotBlank(message = "O perfil é obrigatório")
     private String perfilUsuario;
+
+    private Set<TreinoDTO> treinos = new HashSet<>();
 
     public UsuarioDTO() {
         iniciarAtributosEmBranco(this);
@@ -81,5 +85,13 @@ public class UsuarioDTO {
 
     public void setPerfilUsuario(String perfilUsuario) {
         this.perfilUsuario = perfilUsuario;
+    }
+
+    public Set<TreinoDTO> getTreinos() {
+        return treinos;
+    }
+
+    public void setTreinos(Set<TreinoDTO> treinos) {
+        this.treinos = treinos;
     }
 }

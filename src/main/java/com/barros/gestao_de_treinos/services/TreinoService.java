@@ -12,6 +12,7 @@ import com.barros.gestao_de_treinos.repositories.TreinoRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,8 @@ public class TreinoService {
     private TreinoRepository repository;
 
     @Autowired
-    UsuarioService usuarioService;
+    @Lazy
+    private UsuarioService usuarioService;
 
     @Autowired
     private ExercicioService exercicioService;
@@ -105,7 +107,4 @@ public class TreinoService {
         retorno.setExercicios(exerciciosDTO);
     }
 
-    public List<Treino> buscarTreinosPorAluno(Long alunoId) {
-        return repository.findByAlunosId(alunoId);
-    }
 }

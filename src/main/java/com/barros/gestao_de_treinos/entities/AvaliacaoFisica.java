@@ -52,7 +52,7 @@ public class AvaliacaoFisica implements Serializable {
         calcularIMC();
     }
 
-    private void calcularIMC() {
+    public void calcularIMC() {
         if (peso != null && altura != null && altura.compareTo(BigDecimal.ZERO) > 0) {
             BigDecimal alturaAoQuadrado = altura.multiply(altura);
             this.imc = peso.divide(alturaAoQuadrado, 2, RoundingMode.HALF_EVEN);
@@ -127,6 +127,20 @@ public class AvaliacaoFisica implements Serializable {
 
     public void setAluno(Usuario aluno) {
         this.aluno = aluno;
+    }
+
+    public void setIdAluno(String idAluno) {
+        if (this.aluno == null) {
+            this.aluno = new Usuario();
+        }
+        this.aluno.setId(idAluno);
+    }
+
+    public void setIdInstrutor(String idInstrutor) {
+        if (this.instrutor == null) {
+            this.instrutor = new Usuario();
+        }
+        this.instrutor.setId(idInstrutor);
     }
 
     @Override

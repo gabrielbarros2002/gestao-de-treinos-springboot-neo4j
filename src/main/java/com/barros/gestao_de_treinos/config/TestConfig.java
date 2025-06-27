@@ -1,8 +1,11 @@
 package com.barros.gestao_de_treinos.config;
 
+import com.barros.gestao_de_treinos.DTOs.AvaliacaoFisicaDTO;
 import com.barros.gestao_de_treinos.entities.*;
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
+import com.barros.gestao_de_treinos.mappers.AvaliacaoFisicaMapper;
 import com.barros.gestao_de_treinos.repositories.*;
+import com.barros.gestao_de_treinos.services.AvaliacaoFisicaService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +16,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 @Configuration
 @Profile({"test", "dev"})
@@ -31,7 +35,7 @@ public class TestConfig implements CommandLineRunner {
     private TreinoRepository treinoRepository;
 
     @Autowired
-    private AvaliacaoFisicaRepository avaliacaoFisicaRepository;
+    private AvaliacaoFisicaService avaliacaoFisicaService;
 
     @Override
     @Transactional
@@ -236,47 +240,39 @@ public class TestConfig implements CommandLineRunner {
                 treinoResistenciaMuscular, treinoDefinicaoABC, treinoPreparatorioFisico));
 
         // Aluno 1 (João Silva) - 3 treinos
-        aluno1.addTreino(treinoRepository.findById(treinoAvancadoA.getId()).orElseThrow());  // Treino 1
-        aluno1.addTreino(treinoRepository.findById(treinoAvancadoB.getId()).orElseThrow());  // Treino 4
-        aluno1.addTreino(treinoRepository.findById(treinoAvancadoC.getId()).orElseThrow());  // Treino 7
+        Set<String> idsTreinosAluno1 = Set.of(treinoAvancadoA.getId(), treinoAvancadoB.getId(), treinoAvancadoC.getId());
+        System.out.println("Atribuindo treinos " + idsTreinosAluno1 + " para o aluno " + aluno1.getId());
+        usuarioRepository.atribuirTreinosAoAluno(aluno1.getId(), idsTreinosAluno1);
 
         // Aluno 2 (Maria Oliveira) - 4 treinos
-        aluno2.addTreino(treinoRepository.findById(treinoAvancadoB.getId()).orElseThrow());  // Treino 2
-        aluno2.addTreino(treinoRepository.findById(treinoFullBodyIntensivo.getId()).orElseThrow());  // Treino 5
-        aluno2.addTreino(treinoRepository.findById(treinoForcaSuperior.getId()).orElseThrow());  // Treino 8
-        aluno2.addTreino(treinoRepository.findById(treinoPreparatorioFisico.getId()).orElseThrow());  // Treino 10
+        Set<String> idsTreinosAluno2 = Set.of(treinoAvancadoB.getId(), treinoFullBodyIntensivo.getId(),
+                treinoForcaSuperior.getId(), treinoPreparatorioFisico.getId());
+        usuarioRepository.atribuirTreinosAoAluno(aluno2.getId(), idsTreinosAluno2);
 
         // Aluno 3 (Carlos Souza) - 5 treinos
-        aluno3.addTreino(treinoRepository.findById(treinoAvancadoA.getId()).orElseThrow());  // Treino 1
-        aluno3.addTreino(treinoRepository.findById(treinoAvancadoC.getId()).orElseThrow());  // Treino 3
-        aluno3.addTreino(treinoRepository.findById(treinoFullBodyIntensivo.getId()).orElseThrow());  // Treino 5
-        aluno3.addTreino(treinoRepository.findById(treinoForcaSuperior.getId()).orElseThrow());  // Treino 7
-        aluno3.addTreino(treinoRepository.findById(treinoResistenciaMuscular.getId()).orElseThrow());  // Treino 9
+        Set<String> idsTreinosAluno3 = Set.of(treinoAvancadoA.getId(), treinoAvancadoC.getId(),
+                treinoFullBodyIntensivo.getId(), treinoForcaSuperior.getId(), treinoResistenciaMuscular.getId());
+        usuarioRepository.atribuirTreinosAoAluno(aluno3.getId(), idsTreinosAluno3);
 
         // Aluno 4 (Ana Pereira) - 3 treinos
-        aluno4.addTreino(treinoRepository.findById(treinoAvancadoB.getId()).orElseThrow());  // Treino 2
-        aluno4.addTreino(treinoRepository.findById(treinoHipertrofiaInferior.getId()).orElseThrow());  // Treino 6
-        aluno4.addTreino(treinoRepository.findById(treinoPreparatorioFisico.getId()).orElseThrow());  // Treino 10
+        Set<String> idsTreinosAluno4 = Set.of(treinoAvancadoB.getId(), treinoHipertrofiaInferior.getId(),
+                treinoPreparatorioFisico.getId());
+        usuarioRepository.atribuirTreinosAoAluno(aluno4.getId(), idsTreinosAluno4);
 
         // Aluno 5 (Pedro Costa) - 4 treinos
-        aluno5.addTreino(treinoRepository.findById(treinoAvancadoC.getId()).orElseThrow());  // Treino 3
-        aluno5.addTreino(treinoRepository.findById(treinoAvancadoA.getId()).orElseThrow());  // Treino 4
-        aluno5.addTreino(treinoRepository.findById(treinoHipertrofiaInferior.getId()).orElseThrow());  // Treino 6
-        aluno5.addTreino(treinoRepository.findById(treinoResistenciaMuscular.getId()).orElseThrow());  // Treino 9
+        Set<String> idsTreinosAluno5 = Set.of(treinoAvancadoC.getId(), treinoAvancadoA.getId(),
+                treinoHipertrofiaInferior.getId(), treinoResistenciaMuscular.getId());
+        usuarioRepository.atribuirTreinosAoAluno(aluno5.getId(), idsTreinosAluno5);
 
         // Aluno 6 (Juliana Santos) - 3 treinos
-        aluno6.addTreino(treinoRepository.findById(treinoAvancadoA.getId()).orElseThrow());  // Treino 1
-        aluno6.addTreino(treinoRepository.findById(treinoForcaSuperior.getId()).orElseThrow());  // Treino 5
-        aluno6.addTreino(treinoRepository.findById(treinoPreparatorioFisico.getId()).orElseThrow());  // Treino 8
+        Set<String> idsTreinosAluno6 = Set.of(treinoAvancadoA.getId(), treinoForcaSuperior.getId(),
+                treinoPreparatorioFisico.getId());
+        usuarioRepository.atribuirTreinosAoAluno(aluno6.getId(), idsTreinosAluno6);
 
         // Aluno 7 (Lucas Fernandes) - 5 treinos
-        aluno7.addTreino(treinoRepository.findById(treinoAvancadoB.getId()).orElseThrow());  // Treino 2
-        aluno7.addTreino(treinoRepository.findById(treinoFullBodyIntensivo.getId()).orElseThrow());  // Treino 4
-        aluno7.addTreino(treinoRepository.findById(treinoHipertrofiaInferior.getId()).orElseThrow());  // Treino 6
-        aluno7.addTreino(treinoRepository.findById(treinoResistenciaMuscular.getId()).orElseThrow());  // Treino 8
-        aluno7.addTreino(treinoRepository.findById(treinoPreparatorioFisico.getId()).orElseThrow());  // Treino 10
-
-        usuarioRepository.saveAll(Arrays.asList(aluno1, aluno2, aluno3, aluno4, aluno5, aluno6, aluno7));
+        Set<String> idsTreinosAluno7 = Set.of(treinoAvancadoB.getId(), treinoFullBodyIntensivo.getId(),
+                treinoHipertrofiaInferior.getId(), treinoResistenciaMuscular.getId(), treinoPreparatorioFisico.getId());
+        usuarioRepository.atribuirTreinosAoAluno(aluno7.getId(), idsTreinosAluno7);
 
         // Instanciando as avaliações físicas
         List<AvaliacaoFisica> avaliacoesFisicas = List.of(
@@ -316,7 +312,8 @@ public class TestConfig implements CommandLineRunner {
                 new AvaliacaoFisica(null, LocalDate.of(2024, 7, 22), BigDecimal.valueOf(74.20), BigDecimal.valueOf(1.78), BigDecimal.valueOf(15.20), BigDecimal.valueOf(61.50), instrutorRicardo, aluno7)
         );
 
-//        avaliacaoFisicaRepository.saveAll(avaliacoesFisicas);
+        avaliacoesFisicas.forEach(avaliacaoFisica ->
+                avaliacaoFisicaService.insert(AvaliacaoFisicaMapper.toDTO(avaliacaoFisica)));
 
         System.out.println("Dados iniciais carregados com sucesso!");
     }

@@ -10,6 +10,7 @@ public class TreinoExercicioDTO {
     private String nomeGrupoMuscular;
     private Integer series;
     private Integer repeticoes;
+    private Integer ordem;
 
     public TreinoExercicioDTO() {
         iniciarAtributosEmBranco(this);
@@ -61,5 +62,13 @@ public class TreinoExercicioDTO {
 
     public void setRepeticoes(Integer repeticoes) {
         this.repeticoes = repeticoes;
+    }
+
+    public Integer getOrdem() {
+        return ordem;
+    }
+
+    public void setOrdem(Integer ordem) {
+        this.ordem = ordem;
     }
 }

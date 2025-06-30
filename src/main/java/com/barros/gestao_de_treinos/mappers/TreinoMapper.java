@@ -13,6 +13,8 @@ public class TreinoMapper {
         dto.setIdInstrutor(entity.getInstrutor().getId());
         dto.setNomeInstrutor(entity.getInstrutor().getNome());
 
+        dto.setExercicios(entity.getExercicios().stream().map(TreinoExercicioMapper::toDTO).toList());
+
         return dto;
     }
 

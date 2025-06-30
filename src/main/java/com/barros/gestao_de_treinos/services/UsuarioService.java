@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UsuarioService {
@@ -71,16 +72,7 @@ public class UsuarioService {
         entity.setEmail(obj.getEmailUsuario());
         entity.setDataNascimento(obj.getDataNascimentoUsuario());
         entity.setSenha(obj.getSenhaUsuario());
-
-        List<Treino> treinosAtualizados = Optional.ofNullable(obj.getTreinos())
-                .orElseThrow(() -> new RuntimeException("Treinos não foram enviados"))
-                .stream()
-                .map(t -> treinoRepository.findById(t.getIdTreino())
-                        .orElseThrow(() -> new RuntimeException("Treino com ID " + t.getIdTreino() + " não encontrado")))
-                .toList();
-
-        entity.getTreinos().clear();
-        entity.getTreinos().addAll(treinosAtualizados);
+        entity.setTreinos(null);
     }
 
     public UsuarioDTO autenticar(String email, String senha) {

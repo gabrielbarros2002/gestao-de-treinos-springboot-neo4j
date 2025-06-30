@@ -4,6 +4,8 @@ import com.barros.gestao_de_treinos.DTOs.UsuarioDTO;
 import com.barros.gestao_de_treinos.entities.Usuario;
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
 
+import java.util.stream.Collectors;
+
 public class UsuarioMapper {
 
     public static UsuarioDTO toDTO(Usuario entity) {
@@ -19,6 +21,8 @@ public class UsuarioMapper {
         if (entity.getPerfil() != null) {
             dto.setPerfilUsuario(entity.getPerfil().getCodigo());
         }
+
+        dto.setTreinos(entity.getTreinos().stream().map(TreinoMapper::toDTO).collect(Collectors.toSet()));
 
         return dto;
     }

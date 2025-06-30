@@ -8,6 +8,7 @@ import com.barros.gestao_de_treinos.entities.TreinoExercicio;
 import com.barros.gestao_de_treinos.entities.Usuario;
 import com.barros.gestao_de_treinos.mappers.TreinoExercicioMapper;
 import com.barros.gestao_de_treinos.mappers.TreinoMapper;
+import com.barros.gestao_de_treinos.mappers.UsuarioMapper;
 import com.barros.gestao_de_treinos.repositories.TreinoRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;
@@ -105,6 +106,14 @@ public class TreinoService {
                 .map(TreinoExercicioMapper::toDTO)
                 .collect(Collectors.toList());
         retorno.setExercicios(exerciciosDTO);
+    }
+
+    public List<TreinoDTO> buscarTreinosPorAluno(String alunoId) {
+        List<Treino> entityList = repository.buscarTreinosPorIdAluno(alunoId);
+
+        return entityList.stream()
+                .map(treino -> TreinoMapper.toDTO(repository.findById(treino.getId()).orElseThrow()))
+                .toList();
     }
 
 }

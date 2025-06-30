@@ -14,6 +14,7 @@ public class TreinoExercicioMapper {
         dto.setNomeGrupoMuscular(entity.getExercicio().getGrupoMuscular().getNome());
         dto.setSeries(entity.getSeries());
         dto.setRepeticoes(entity.getRepeticoes());
+        dto.setOrdem(entity.getOrdem());
 
         return dto;
     }
@@ -25,6 +26,7 @@ public class TreinoExercicioMapper {
 
         entity.setSeries(dto.getSeries());
         entity.setRepeticoes(dto.getRepeticoes());
+        entity.setOrdem(dto.getOrdem());
 
         return entity;
     }

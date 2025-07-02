@@ -33,7 +33,7 @@ public class AvaliacaoFisicaResource {
     @PostMapping
     public ResponseEntity<AvaliacaoFisicaDTO> insert(@Valid @RequestBody AvaliacaoFisicaDTO obj) {
         obj = service.insert(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdAvaliacao()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 

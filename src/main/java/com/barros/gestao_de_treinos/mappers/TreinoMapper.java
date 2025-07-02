@@ -8,8 +8,8 @@ public class TreinoMapper {
 
     public static TreinoDTO toDTO(Treino entity) {
         TreinoDTO dto = new TreinoDTO();
-        dto.setIdTreino(entity.getId());
-        dto.setNomeTreino(entity.getNome());
+        dto.setId(entity.getId());
+        dto.setNome(entity.getNome());
         dto.setIdInstrutor(entity.getInstrutor().getId());
         dto.setNomeInstrutor(entity.getInstrutor().getNome());
 
@@ -20,8 +20,8 @@ public class TreinoMapper {
 
     public static Treino toEntity(TreinoDTO dto, Usuario instrutor) {
         Treino entity = new Treino();
-        entity.setId(dto.getIdTreino());
-        entity.setNome(dto.getNomeTreino());
+        entity.setId(dto.getId());
+        entity.setNome(dto.getNome());
         entity.setInstrutor(instrutor);
 
         return entity;

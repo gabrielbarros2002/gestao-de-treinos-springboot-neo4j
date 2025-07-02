@@ -10,11 +10,11 @@ import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 
 public class TreinoDTO {
 
-    private String idTreino;
+    private String id;
 
     @NotBlank(message = "O nome do treino é obrigatório")
     @Size(min = 3, max = 100, message = "O nome deve ter entre {min} e {max} caracteres")
-    private String nomeTreino;
+    private String nome;
 
     @NotNull(message = "O treino deve conter exercícios")
     private List<TreinoExercicioDTO> exercicios;
@@ -28,20 +28,20 @@ public class TreinoDTO {
         iniciarAtributosEmBranco(this);
     }
 
-    public String getIdTreino() {
-        return idTreino;
+    public String getId() {
+        return id;
     }
 
-    public void setIdTreino(String idTreino) {
-        this.idTreino = idTreino;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getNomeTreino() {
-        return nomeTreino;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeTreino(String nomeTreino) {
-        this.nomeTreino = nomeTreino;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public List<TreinoExercicioDTO> getExercicios() {

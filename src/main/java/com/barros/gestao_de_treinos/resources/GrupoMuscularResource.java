@@ -1,7 +1,6 @@
 package com.barros.gestao_de_treinos.resources;
 
 import com.barros.gestao_de_treinos.DTOs.GrupoMuscularDTO;
-import com.barros.gestao_de_treinos.entities.GrupoMuscular;
 import com.barros.gestao_de_treinos.services.GrupoMuscularService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class GrupoMuscularResource {
     @PostMapping
     public ResponseEntity<GrupoMuscularDTO> insert(@Valid @RequestBody GrupoMuscularDTO obj) {
         obj = service.insert(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdGrupoMuscular()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 

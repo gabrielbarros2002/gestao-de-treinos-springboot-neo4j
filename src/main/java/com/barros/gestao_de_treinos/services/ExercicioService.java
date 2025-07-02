@@ -63,8 +63,8 @@ public class ExercicioService {
     }
 
     private void updateData(Exercicio entity, ExercicioDTO obj) {
-        entity.setNome(obj.getNomeExercicio());
-        entity.setDescricao(obj.getDescricaoExercicio());
+        entity.setNome(obj.getNome());
+        entity.setDescricao(obj.getDescricao());
         entity.setGrupoMuscular(grupoMuscularService.findEntityById(obj.getIdGrupoMuscular()));
     }
 }

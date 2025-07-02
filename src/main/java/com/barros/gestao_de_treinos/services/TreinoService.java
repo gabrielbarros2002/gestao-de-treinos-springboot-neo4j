@@ -8,7 +8,6 @@ import com.barros.gestao_de_treinos.entities.TreinoExercicio;
 import com.barros.gestao_de_treinos.entities.Usuario;
 import com.barros.gestao_de_treinos.mappers.TreinoExercicioMapper;
 import com.barros.gestao_de_treinos.mappers.TreinoMapper;
-import com.barros.gestao_de_treinos.mappers.UsuarioMapper;
 import com.barros.gestao_de_treinos.repositories.TreinoRepository;
 import com.barros.gestao_de_treinos.services.exceptions.DatabaseException;
 import com.barros.gestao_de_treinos.services.exceptions.ResourceNotFoundException;
@@ -80,7 +79,7 @@ public class TreinoService {
     }
 
     private void updateData(Treino entity, TreinoDTO dto) {
-        entity.setNome(dto.getNomeTreino());
+        entity.setNome(dto.getNome());
 
         if (dto.getIdInstrutor() != null) {
             Usuario instrutor = usuarioService.findEntityById(dto.getIdInstrutor());

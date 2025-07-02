@@ -71,7 +71,7 @@ public class AvaliacaoFisicaService {
     }
 
     private void updateData(AvaliacaoFisica entity, AvaliacaoFisicaDTO obj) {
-        entity.setData(obj.getDataAvaliacao());
+        entity.setData(obj.getData());
         entity.setAltura(obj.getAltura());
         entity.setPeso(obj.getPeso());
         entity.calcularIMC();

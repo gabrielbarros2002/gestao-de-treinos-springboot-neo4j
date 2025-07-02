@@ -7,29 +7,29 @@ import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 
 public class GrupoMuscularDTO {
 
-    private String idGrupoMuscular;
+    private String id;
 
     @NotBlank(message = "O nome do grupo muscular é obrigatório")
     @Size(min = 3, max = 50, message = "O nome deve ter entre {min} e {max} caracteres")
-    private String nomeGrupoMuscular;
+    private String nome;
 
     public GrupoMuscularDTO() {
         iniciarAtributosEmBranco(this);
     }
 
-    public String getIdGrupoMuscular() {
-        return idGrupoMuscular;
+    public String getId() {
+        return id;
     }
 
-    public void setIdGrupoMuscular(String idGrupoMuscular) {
-        this.idGrupoMuscular = idGrupoMuscular;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getNomeGrupoMuscular() {
-        return nomeGrupoMuscular;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeGrupoMuscular(String nomeGrupoMuscular) {
-        this.nomeGrupoMuscular = nomeGrupoMuscular;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

@@ -60,6 +60,6 @@ public class GrupoMuscularService {
     }
 
     private void updateData(GrupoMuscular entity, GrupoMuscularDTO obj) {
-        entity.setNome(obj.getNomeGrupoMuscular());
+        entity.setNome(obj.getNome());
     }
 }

@@ -37,7 +37,7 @@ public class TreinoResource {
     @PostMapping
     public ResponseEntity<TreinoDTO> insert(@Valid @RequestBody TreinoDTO obj) {
         obj = service.insert(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdTreino()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 

@@ -7,16 +7,16 @@ public class GrupoMuscularMapper {
 
     public static GrupoMuscularDTO toDTO(GrupoMuscular entity) {
         GrupoMuscularDTO dto = new GrupoMuscularDTO();
-        dto.setIdGrupoMuscular(entity.getId());
-        dto.setNomeGrupoMuscular(entity.getNome());
+        dto.setId(entity.getId());
+        dto.setNome(entity.getNome());
 
         return dto;
     }
 
     public static GrupoMuscular toEntity(GrupoMuscularDTO dto) {
         GrupoMuscular entity = new GrupoMuscular();
-        entity.setId(dto.getIdGrupoMuscular());
-        entity.setNome(dto.getNomeGrupoMuscular());
+        entity.setId(dto.getId());
+        entity.setNome(dto.getNome());
 
         return entity;
     }

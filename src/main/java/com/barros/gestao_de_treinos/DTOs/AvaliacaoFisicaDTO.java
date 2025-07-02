@@ -11,11 +11,11 @@ import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 
 public class AvaliacaoFisicaDTO {
 
-    private String idAvaliacao;
+    private String id;
 
     @NotNull(message = "A data da avaliação é obrigatória")
     @PastOrPresent(message = "A data da avaliação não pode ser no futuro")
-    private LocalDate dataAvaliacao;
+    private LocalDate data;
 
     @NotNull(message = "O peso é obrigatório")
     @Positive(message = "O peso deve ser maior que zero")
@@ -51,20 +51,20 @@ public class AvaliacaoFisicaDTO {
         iniciarAtributosEmBranco(this);
     }
 
-    public String getIdAvaliacao() {
-        return idAvaliacao;
+    public String getId() {
+        return id;
     }
 
-    public void setIdAvaliacao(String idAvaliacao) {
-        this.idAvaliacao = idAvaliacao;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public LocalDate getDataAvaliacao() {
-        return dataAvaliacao;
+    public LocalDate getData() {
+        return data;
     }
 
-    public void setDataAvaliacao(LocalDate dataAvaliacao) {
-        this.dataAvaliacao = dataAvaliacao;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
     public BigDecimal getPeso() {

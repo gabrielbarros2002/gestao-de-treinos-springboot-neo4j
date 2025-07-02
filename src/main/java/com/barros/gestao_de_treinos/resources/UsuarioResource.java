@@ -34,7 +34,7 @@ public class UsuarioResource {
     @PostMapping
     public ResponseEntity<UsuarioDTO> insert(@Valid @RequestBody UsuarioDTO obj) {
         obj = service.insert(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdUsuario()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 

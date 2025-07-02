@@ -13,25 +13,25 @@ import static com.barros.gestao_de_treinos.utils.Util.iniciarAtributosEmBranco;
 
 public class UsuarioDTO {
 
-    private String idUsuario;
+    private String id;
 
     @NotBlank(message = "O nome é obrigatório")
     @Size(min = 3, max = 100, message = "O nome deve ter entre {min} e {max} caracteres")
-    private String nomeUsuario;
+    private String nome;
 
     @NotBlank(message = "O email é obrigatório")
     @Email(message = "Por favor, forneça um endereço de email válido")
-    private String emailUsuario;
+    private String email;
 
     @NotBlank(message = "A senha é obrigatória")
     @Size(min = 5, message = "A senha deve ter no mínimo {min} caracteres")
-    private String senhaUsuario;
+    private String senha;
 
     @NotNull(message = "A data de nascimento é obrigatória")
-    private LocalDate dataNascimentoUsuario;
+    private LocalDate dataNascimento;
 
     @NotBlank(message = "O perfil é obrigatório")
-    private String perfilUsuario;
+    private String perfil;
 
     private Set<TreinoDTO> treinos = new HashSet<>();
 
@@ -39,52 +39,52 @@ public class UsuarioDTO {
         iniciarAtributosEmBranco(this);
     }
 
-    public String getIdUsuario() {
-        return idUsuario;
+    public String getId() {
+        return id;
     }
 
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getNomeUsuario() {
-        return nomeUsuario;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getEmailUsuario() {
-        return emailUsuario;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailUsuario(String emailUsuario) {
-        this.emailUsuario = emailUsuario;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getSenhaUsuario() {
-        return senhaUsuario;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setSenhaUsuario(String senhaUsuario) {
-        this.senhaUsuario = senhaUsuario;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
-    public LocalDate getDataNascimentoUsuario() {
-        return dataNascimentoUsuario;
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDataNascimentoUsuario(LocalDate dataNascimentoUsuario) {
-        this.dataNascimentoUsuario = dataNascimentoUsuario;
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
-    public String getPerfilUsuario() {
-        return perfilUsuario;
+    public String getPerfil() {
+        return perfil;
     }
 
-    public void setPerfilUsuario(String perfilUsuario) {
-        this.perfilUsuario = perfilUsuario;
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
     }
 
     public Set<TreinoDTO> getTreinos() {

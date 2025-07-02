@@ -1,7 +1,6 @@
 package com.barros.gestao_de_treinos.services;
 
 import com.barros.gestao_de_treinos.DTOs.UsuarioDTO;
-import com.barros.gestao_de_treinos.entities.Treino;
 import com.barros.gestao_de_treinos.entities.Usuario;
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
 import com.barros.gestao_de_treinos.mappers.UsuarioMapper;
@@ -14,10 +13,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class UsuarioService {
@@ -68,10 +65,10 @@ public class UsuarioService {
     }
 
     private void updateData(Usuario entity, UsuarioDTO obj) {
-        entity.setNome(obj.getNomeUsuario());
-        entity.setEmail(obj.getEmailUsuario());
-        entity.setDataNascimento(obj.getDataNascimentoUsuario());
-        entity.setSenha(obj.getSenhaUsuario());
+        entity.setNome(obj.getNome());
+        entity.setEmail(obj.getEmail());
+        entity.setDataNascimento(obj.getDataNascimento());
+        entity.setSenha(obj.getSenha());
         entity.setTreinos(null);
     }
 

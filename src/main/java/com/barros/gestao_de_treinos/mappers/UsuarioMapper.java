@@ -12,14 +12,14 @@ public class UsuarioMapper {
         if (entity == null) return null;
 
         UsuarioDTO dto = new UsuarioDTO();
-        dto.setIdUsuario(entity.getId());
-        dto.setNomeUsuario(entity.getNome());
-        dto.setEmailUsuario(entity.getEmail());
-        dto.setSenhaUsuario(entity.getSenha());
-        dto.setDataNascimentoUsuario(entity.getDataNascimento());
+        dto.setId(entity.getId());
+        dto.setNome(entity.getNome());
+        dto.setEmail(entity.getEmail());
+        dto.setSenha(entity.getSenha());
+        dto.setDataNascimento(entity.getDataNascimento());
 
         if (entity.getPerfil() != null) {
-            dto.setPerfilUsuario(entity.getPerfil().getCodigo());
+            dto.setPerfil(entity.getPerfil().getCodigo());
         }
 
         dto.setTreinos(entity.getTreinos().stream().map(TreinoMapper::toDTO).collect(Collectors.toSet()));
@@ -31,14 +31,14 @@ public class UsuarioMapper {
         if (dto == null) return null;
 
         Usuario entity = new Usuario();
-        entity.setId(dto.getIdUsuario());
-        entity.setNome(dto.getNomeUsuario());
-        entity.setEmail(dto.getEmailUsuario());
-        entity.setSenha(dto.getSenhaUsuario());
-        entity.setDataNascimento(dto.getDataNascimentoUsuario());
+        entity.setId(dto.getId());
+        entity.setNome(dto.getNome());
+        entity.setEmail(dto.getEmail());
+        entity.setSenha(dto.getSenha());
+        entity.setDataNascimento(dto.getDataNascimento());
 
-        if (dto.getPerfilUsuario() != null) {
-            entity.setPerfil(Perfil.fromCodigo(dto.getPerfilUsuario()));
+        if (dto.getPerfil() != null) {
+            entity.setPerfil(Perfil.fromCodigo(dto.getPerfil()));
         }
 
         return entity;

@@ -17,11 +17,11 @@ public interface AvaliacaoFisicaRepository extends Neo4jRepository<AvaliacaoFisi
         CREATE (af:AvaliacaoFisica {
             id: $id,
             data: date($data),
-            peso: toFloat($peso),
-            altura: toFloat($altura),
-            imc: toFloat($imc),
-            percentualGordura: toFloat($percentualGordura),
-            massaMuscularKg: toFloat($massaMuscularKg)
+            peso: $peso,
+            altura: $altura,
+            imc: $imc,
+            percentualGordura: $percentualGordura,
+            massaMuscularKg: $massaMuscularKg
         })
         MERGE (af)-[:REALIZADA_POR_ALUNO]->(a)
         MERGE (af)-[:REALIZADA_POR_INSTRUTOR]->(i)

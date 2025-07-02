@@ -34,7 +34,7 @@ public class AvaliacaoFisicaMapper {
         entity.setMassaMuscularKg(dto.getMassaMuscularKg());
 
         entity.setAluno(new Usuario());
-        entity.getAluno().setId(dto.getIdAvaliacao());
+        entity.getAluno().setId(dto.getIdAluno());
         entity.getAluno().setNome(dto.getNomeAluno());
 
         entity.setInstrutor(new Usuario());

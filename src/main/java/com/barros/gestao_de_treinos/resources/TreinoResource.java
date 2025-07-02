@@ -3,6 +3,7 @@ package com.barros.gestao_de_treinos.resources;
 import com.barros.gestao_de_treinos.DTOs.TreinoDTO;
 import com.barros.gestao_de_treinos.services.TreinoService;
 import com.barros.gestao_de_treinos.services.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +35,7 @@ public class TreinoResource {
     }
 
     @PostMapping
-    public ResponseEntity<TreinoDTO> insert(@RequestBody TreinoDTO obj) {
+    public ResponseEntity<TreinoDTO> insert(@Valid @RequestBody TreinoDTO obj) {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdTreino()).toUri();
         return ResponseEntity.created(uri).body(obj);
@@ -47,7 +48,7 @@ public class TreinoResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<TreinoDTO> update(@PathVariable String id, @RequestBody TreinoDTO obj) {
+    public ResponseEntity<TreinoDTO> update(@PathVariable String id, @Valid @RequestBody TreinoDTO obj) {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
     }

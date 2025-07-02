@@ -2,6 +2,7 @@ package com.barros.gestao_de_treinos.resources;
 
 import com.barros.gestao_de_treinos.DTOs.AvaliacaoFisicaDTO;
 import com.barros.gestao_de_treinos.services.AvaliacaoFisicaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class AvaliacaoFisicaResource {
     }
 
     @PostMapping
-    public ResponseEntity<AvaliacaoFisicaDTO> insert(@RequestBody AvaliacaoFisicaDTO obj) {
+    public ResponseEntity<AvaliacaoFisicaDTO> insert(@Valid @RequestBody AvaliacaoFisicaDTO obj) {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdAvaliacao()).toUri();
         return ResponseEntity.created(uri).body(obj);
@@ -43,7 +44,7 @@ public class AvaliacaoFisicaResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<AvaliacaoFisicaDTO> update(@PathVariable String id, @RequestBody AvaliacaoFisicaDTO obj) {
+    public ResponseEntity<AvaliacaoFisicaDTO> update(@PathVariable String id, @Valid @RequestBody AvaliacaoFisicaDTO obj) {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
     }

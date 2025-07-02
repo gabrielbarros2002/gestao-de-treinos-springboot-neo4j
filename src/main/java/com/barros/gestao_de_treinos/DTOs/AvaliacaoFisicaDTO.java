@@ -25,8 +25,6 @@ public class AvaliacaoFisicaDTO {
     @Positive(message = "A altura deve ser maior que zero")
     private BigDecimal altura;
 
-    @NotNull(message = "O IMC é obrigatório")
-    @Positive(message = "O IMC deve ser maior que zero")
     private BigDecimal imc;
 
     @NotNull(message = "O percentual de gordura é obrigatório")

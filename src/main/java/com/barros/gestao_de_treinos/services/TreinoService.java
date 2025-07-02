@@ -1,7 +1,6 @@
 package com.barros.gestao_de_treinos.services;
 
 import com.barros.gestao_de_treinos.DTOs.TreinoDTO;
-import com.barros.gestao_de_treinos.DTOs.TreinoExercicioDTO;
 import com.barros.gestao_de_treinos.entities.Exercicio;
 import com.barros.gestao_de_treinos.entities.Treino;
 import com.barros.gestao_de_treinos.entities.TreinoExercicio;
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -86,25 +84,16 @@ public class TreinoService {
             entity.setInstrutor(instrutor);
         }
 
-        Set<TreinoExercicio> novosExercicios = Optional.ofNullable(dto.getExercicios())
+        List<TreinoExercicio> novosExercicios = Optional.ofNullable(dto.getExercicios())
                 .orElseThrow(() -> new RuntimeException("Exercícios não foram enviados"))
                 .stream()
                 .map(teDto -> {
                     Exercicio exercicio = exercicioService.findEntityById(teDto.getIdExercicio());
-                    return TreinoExercicioMapper.toEntity(teDto, entity, exercicio);
+                    return TreinoExercicioMapper.toEntity(teDto, exercicio);
                 })
-                .collect(Collectors.toSet());
-
-        entity.getExercicios().clear();
-        entity.getExercicios().addAll(novosExercicios);
-
-        Treino atualizado = repository.save(entity);
-
-        TreinoDTO retorno = TreinoMapper.toDTO(atualizado);
-        List<TreinoExercicioDTO> exerciciosDTO = atualizado.getExercicios().stream()
-                .map(TreinoExercicioMapper::toDTO)
                 .collect(Collectors.toList());
-        retorno.setExercicios(exerciciosDTO);
+
+        entity.setExercicios(novosExercicios);
     }
 
     public List<TreinoDTO> buscarTreinosPorAluno(String alunoId) {

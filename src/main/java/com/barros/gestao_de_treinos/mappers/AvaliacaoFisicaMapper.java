@@ -12,6 +12,7 @@ public class AvaliacaoFisicaMapper {
         dto.setData(entity.getData());
         dto.setPeso(entity.getPeso());
         dto.setAltura(entity.getAltura());
+        dto.setImc(entity.getImc());
         dto.setPercentualGordura(entity.getPercentualGordura());
         dto.setMassaMuscularKg(entity.getMassaMuscularKg());
 

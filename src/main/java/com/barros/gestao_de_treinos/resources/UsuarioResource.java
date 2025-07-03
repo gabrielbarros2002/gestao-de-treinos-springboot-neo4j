@@ -73,4 +73,22 @@ public class UsuarioResource {
         return ResponseEntity.ok().body(alunos);
     }
 
+    @PostMapping("/atribuirTreinoAoAluno")
+    public ResponseEntity<Void> atribuirTreinoAoAluno(
+            @RequestParam() String idAluno,
+            @RequestParam() String idTreino
+    ) {
+        service.atribuirTreinoAoAluno(idAluno.trim(), idTreino.trim());
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/removerTreinoDoAluno")
+    public ResponseEntity<Void> removerTreinoDoAluno(
+            @RequestParam String idAluno,
+            @RequestParam String idTreino
+    ) {
+        service.removerTreinoDoAluno(idAluno.trim(), idTreino.trim());
+        return ResponseEntity.noContent().build();
+    }
+
 }

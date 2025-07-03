@@ -23,5 +23,17 @@ public interface UsuarioRepository extends Neo4jRepository<Usuario, String> {
     """)
     void atribuirTreinosAoAluno(String idAluno, Collection<String> idsTreinos);
 
+    @Query("""
+        MATCH (t:Treino {id: $idTreino})
+        MATCH (u:Usuario {id: $idAluno})
+        MERGE (t)-[:ATRIBUIDO_PARA]->(u)
+    """)
+    void atribuirTreinoAoAluno(String idAluno, String idTreino);
+
+    @Query("""
+        MATCH (t:Treino {id: $idTreino})-[r:ATRIBUIDO_PARA]->(u:Usuario {id: $idAluno})
+        DELETE r
+    """)
+    void removerTreinoDoAluno(String idAluno, String idTreino);
 
 }

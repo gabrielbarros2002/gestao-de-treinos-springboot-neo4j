@@ -86,4 +86,12 @@ public class UsuarioService {
         List<Usuario> entityList = repository.findByPerfil(Perfil.INSTRUTOR);
         return entityList.stream().map(UsuarioMapper::toDTO).toList();
     }
+
+    public void atribuirTreinoAoAluno(String idAluno, String idTreino) {
+        repository.atribuirTreinoAoAluno(idAluno, idTreino);
+    }
+
+    public void removerTreinoDoAluno(String idAluno, String idTreino) {
+        repository.removerTreinoDoAluno(idAluno, idTreino);
+    }
 }

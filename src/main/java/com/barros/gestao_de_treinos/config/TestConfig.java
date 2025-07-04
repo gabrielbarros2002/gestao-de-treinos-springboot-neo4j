@@ -1,10 +1,12 @@
 package com.barros.gestao_de_treinos.config;
 
-import com.barros.gestao_de_treinos.DTOs.AvaliacaoFisicaDTO;
 import com.barros.gestao_de_treinos.entities.*;
 import com.barros.gestao_de_treinos.entities.enums.Perfil;
 import com.barros.gestao_de_treinos.mappers.AvaliacaoFisicaMapper;
-import com.barros.gestao_de_treinos.repositories.*;
+import com.barros.gestao_de_treinos.repositories.ExercicioRepository;
+import com.barros.gestao_de_treinos.repositories.GrupoMuscularRepository;
+import com.barros.gestao_de_treinos.repositories.TreinoRepository;
+import com.barros.gestao_de_treinos.repositories.UsuarioRepository;
 import com.barros.gestao_de_treinos.services.AvaliacaoFisicaService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

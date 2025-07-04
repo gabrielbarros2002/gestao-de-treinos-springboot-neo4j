@@ -88,10 +88,14 @@ public class UsuarioService {
     }
 
     public void atribuirTreinoAoAluno(String idAluno, String idTreino) {
-        repository.atribuirTreinoAoAluno(idAluno, idTreino);
+        repository.atribuirTreinoAoAluno(idAluno, idTreino, 0);
     }
 
     public void removerTreinoDoAluno(String idAluno, String idTreino) {
         repository.removerTreinoDoAluno(idAluno, idTreino);
+    }
+
+    public Integer contarExecucaoDeTreino(String idAluno, String idTreino) {
+        return repository.contarExecucaoDeTreino(idAluno, idTreino);
     }
 }

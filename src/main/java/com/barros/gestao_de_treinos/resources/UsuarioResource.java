@@ -91,4 +91,13 @@ public class UsuarioResource {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("/contarExecucaoDeTreino")
+    public ResponseEntity<Integer> contarExecucaoDeTreino(
+            @RequestParam String idAluno,
+            @RequestParam String idTreino
+    ) {
+        Integer quantExecucoes = service.contarExecucaoDeTreino(idAluno.trim(), idTreino.trim());
+        return ResponseEntity.ok().body(quantExecucoes);
+    }
+
 }

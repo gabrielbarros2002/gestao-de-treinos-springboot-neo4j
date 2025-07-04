@@ -31,7 +31,7 @@ public class Usuario implements Serializable {
     private Perfil perfil;
 
     @Relationship(type = "ATRIBUIDO_PARA", direction = Relationship.Direction.INCOMING)
-    private Set<Treino> treinos = new HashSet<>();
+    private Set<AlunoTreino> treinos = new HashSet<>();
 
     public Usuario() {}
 
@@ -92,15 +92,15 @@ public class Usuario implements Serializable {
         this.perfil = perfil;
     }
 
-    public Set<Treino> getTreinos() {
+    public Set<AlunoTreino> getTreinos() {
         return treinos;
     }
 
-    public void setTreinos(Set<Treino> treinos) {
+    public void setTreinos(Set<AlunoTreino> treinos) {
         this.treinos = treinos;
     }
 
-    public void addTreino(Treino treino) {
+    public void addTreino(AlunoTreino treino) {
         this.treinos.add(treino);
     }
 

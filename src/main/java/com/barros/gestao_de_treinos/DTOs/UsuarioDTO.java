@@ -33,7 +33,7 @@ public class UsuarioDTO {
     @NotBlank(message = "O perfil é obrigatório")
     private String perfil;
 
-    private Set<TreinoDTO> treinos = new HashSet<>();
+    private Set<AlunoTreinoDTO> treinos = new HashSet<>();
 
     public UsuarioDTO() {
         iniciarAtributosEmBranco(this);
@@ -87,11 +87,11 @@ public class UsuarioDTO {
         this.perfil = perfil;
     }
 
-    public Set<TreinoDTO> getTreinos() {
+    public Set<AlunoTreinoDTO> getTreinos() {
         return treinos;
     }
 
-    public void setTreinos(Set<TreinoDTO> treinos) {
+    public void setTreinos(Set<AlunoTreinoDTO> treinos) {
         this.treinos = treinos;
     }
 }

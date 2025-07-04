@@ -22,7 +22,7 @@ public class UsuarioMapper {
             dto.setPerfil(entity.getPerfil().getCodigo());
         }
 
-        dto.setTreinos(entity.getTreinos().stream().map(TreinoMapper::toDTO).collect(Collectors.toSet()));
+        dto.setTreinos(entity.getTreinos().stream().map(AlunoTreinoMapper::toDTO).collect(Collectors.toSet()));
 
         return dto;
     }

@@ -19,16 +19,16 @@ public interface UsuarioRepository extends Neo4jRepository<Usuario, String> {
         UNWIND $idsTreinos AS treinoId
         MATCH (t:Treino {id: treinoId})
         MATCH (u:Usuario {id: $idAluno})
-                        MERGE (t)-[r:ATRIBUIDO_PARA]->(u)
-                        SET r.quantExecucoes = 0
+        MERGE (t)-[r:ATRIBUIDO_PARA]->(u)
+        SET r.quantExecucoes = 0
     """)
     void atribuirTreinosAoAluno(String idAluno, Collection<String> idsTreinos);
 
     @Query("""
         MATCH (t:Treino {id: $idTreino})
         MATCH (u:Usuario {id: $idAluno})
-        MERGE (t)-[:ATRIBUIDO_PARA]->(u)
-                        SET r.quantExecucoes = $quantExecucoes
+        MERGE (t)-[r:ATRIBUIDO_PARA]->(u)
+        SET r.quantExecucoes = $quantExecucoes
     """)
     void atribuirTreinoAoAluno(String idAluno, String idTreino, Integer quantExecucoes);
 

@@ -12,8 +12,8 @@ Antes de rodar a aplicação, é necessário ter instalado:
 - Apache Maven  
   https://maven.apache.org/download.cgi
 
-- Neo4j Desktop 
-  https://neo4j.com/download/
+- Neo4j Desktop  
+https://neo4j.com/download/
 
 ## Configuração do banco de dados
 

@@ -1,6 +1,6 @@
 # Backend - Gestão de Treinos
 
-Este é o projeto backend da aplicação Gestão de Treinos, desenvolvido com Spring Boot, JPA e PostgreSQL.
+Este é o projeto backend da aplicação Gestão de Treinos, desenvolvido com Spring Boot e Neo4j.
 
 ## Requisitos
 
@@ -12,21 +12,21 @@ Antes de rodar a aplicação, é necessário ter instalado:
 - Apache Maven  
   https://maven.apache.org/download.cgi
 
-- PostgreSQL + PgAdmin  
-  https://www.postgresql.org/download/
+- Neo4j Desktop  
+https://neo4j.com/download/
 
 ## Configuração do banco de dados
 
-1. No PgAdmin, crie um banco de dados com o nome:
+1. No Neo4j Desktop, crie um banco de dados com o nome: `gestao_de_treinos`
 
 2. Configure um usuário com as seguintes credenciais:
 
-- Usuário: `dev`
-- Senha: `123456`
+- Usuário: `neo4j`
+- Senha: `12345678`
 
 Essas credenciais estão definidas no arquivo `src/main/resources/application.properties`. Caso utilize configurações diferentes, atualize este arquivo conforme necessário.
 
-3. Importe o script `backup.sql`, localizado na raiz do projeto, para popular o banco de dados com dados iniciais.
+3. Importe o script `gestao_de_treinos_backup.dump`, localizado na raiz do projeto, para popular o banco de dados com dados iniciais.
 
 ## Compilação e Execução
 
@@ -46,12 +46,6 @@ Caso a porta esteja ocupada ou seja necessário alterar a configuração, edite 
 
 ## Observações
 
-- Certifique-se de que o serviço do PostgreSQL esteja em execução antes de iniciar a aplicação.
-- O script `backup.sql` deve ser executado apenas uma vez para carga inicial dos dados.
-
-
-
-
-
-
-
+- Certifique-se de que o serviço do Neo4j esteja em execução antes de iniciar a aplicação.
+- Certifique-se de que o banco de dados `gestao_de_treinos` esteja em execução.
+- O script `gestao_de_treinos_backup.dump` deve ser executado apenas uma vez para carga inicial dos dados.
